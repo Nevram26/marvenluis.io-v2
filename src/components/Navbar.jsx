@@ -13,6 +13,7 @@ import { CgFileDocument } from "react-icons/cg";
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
     function scrollHandler() {
@@ -24,6 +25,26 @@ function NavBar() {
     }
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+    const sectionIds = ["home", "about", "projects", "resume"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection("#" + entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px" }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -48,21 +69,33 @@ function NavBar() {
           <span></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
+          <Nav className="ms-auto" activeKey={activeSection}>
             <Nav.Item>
-              <Nav.Link href="#home" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#home"
+                active={activeSection === "#home"}
+                onClick={() => updateExpanded(false)}
+              >
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link href="#about" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#about"
+                active={activeSection === "#about"}
+                onClick={() => updateExpanded(false)}
+              >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link href="#projects" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#projects"
+                active={activeSection === "#projects"}
+                onClick={() => updateExpanded(false)}
+              >
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
                 />{" "}
@@ -71,7 +104,11 @@ function NavBar() {
             </Nav.Item>
 
             <Nav.Item>
-              <Nav.Link href="#resume" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                href="#resume"
+                active={activeSection === "#resume"}
+                onClick={() => updateExpanded(false)}
+              >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
             </Nav.Item>

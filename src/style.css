@@ -215,6 +215,26 @@ button:focus {
   width: 100%;
 }
 
+.navbar-nav .nav-item a.active::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-item a.active {
+  color: #50C878 !important;
+}
+
+/* --------- */
+/* Section headings */
+/* --------- */
+.section-heading {
+  color: white !important;
+  font-size: 3em !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  padding-bottom: 40px !important;
+  padding-top: 10px !important;
+}
+
 /* --------- */
 /* Home section */
 /* --------- */
