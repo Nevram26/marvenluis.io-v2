@@ -10,9 +10,9 @@ import Reveal from "../Reveal";
 
 function About() {
   return (
-    <Container fluid className="about-section" id="about">
+    <Container fluid className="about-section">
       <Particle />
-      <Container>
+      <Container id="about">
         <Reveal>
           <Row style={{ justifyContent: "center", padding: "10px" }}>
             <Col

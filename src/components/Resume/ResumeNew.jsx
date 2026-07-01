@@ -23,9 +23,9 @@ function ResumeNew() {
 
   return (
     <div>
-      <Container fluid className="resume-section" id="resume">
+      <Container fluid className="resume-section">
         <Particle />
-        <Container>
+        <Container id="resume">
           <h1 className="section-heading">
             <strong className="purple">Resume</strong>
           </h1>

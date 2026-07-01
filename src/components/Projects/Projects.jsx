@@ -14,9 +14,9 @@ import panpacificLogo from "../../Assets/Projects/panpacific-logo.svg";
 
 function Projects() {
   return (
-    <Container fluid className="project-section" id="projects">
+    <Container fluid className="project-section">
       <Particle />
-      <Container>
+      <Container id="projects">
         <Reveal>
           <h1 className="project-heading">
             Professional <strong className="purple">Work </strong>
