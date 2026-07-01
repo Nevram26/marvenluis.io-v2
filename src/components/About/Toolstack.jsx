@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { FaWindows, FaPalette } from "react-icons/fa";
+import { FaWindows, FaPalette, FaAws } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
+import { DiGit } from "react-icons/di";
 import {
   SiPostman,
   SiDocker,
@@ -11,7 +12,10 @@ import {
   SiAndroidstudio,
   SiIntellijidea,
   SiObsidian,
-  SiVercel
+  SiVercel,
+  SiNginx,
+  SiJest,
+  SiVitest,
 } from "react-icons/si";
 
 function Toolstack() {
@@ -40,7 +44,23 @@ function Toolstack() {
       <Col xs={4} md={2} className="tech-icons">
         <SiDocker />
       </Col>
-      
+      <Col xs={4} md={2} className="tech-icons">
+        <SiNginx />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <FaAws />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <DiGit />
+      </Col>
+
+      {/* Testing */}
+      <Col xs={4} md={2} className="tech-icons">
+        <SiJest />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiVitest />
+      </Col>
 
       {/* Project Management */}
       <Col xs={4} md={2} className="tech-icons">

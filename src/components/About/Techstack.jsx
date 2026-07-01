@@ -1,7 +1,28 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import { SiKotlin, SiHtml5, SiCplusplus, SiMysql, SiGithub, SiGitlab, SiBootstrap } from "react-icons/si";
-import { DiJavascript1, DiReact, DiNodejs, DiMongodb, DiPython, DiGit, DiJava } from "react-icons/di";
+import {
+  SiTypescript,
+  SiGo,
+  SiPhp,
+  SiDjango,
+  SiTailwindcss,
+  SiFastapi,
+  SiPostgresql,
+  SiSupabase,
+  SiRedis,
+  SiMariadb,
+  SiMysql,
+  SiGithub,
+} from "react-icons/si";
+import {
+  DiJavascript1,
+  DiReact,
+  DiNodejs,
+  DiMongodb,
+  DiPython,
+  DiGit,
+  DiJava,
+} from "react-icons/di";
 
 function Techstack() {
   return (
@@ -11,22 +32,22 @@ function Techstack() {
         <DiJava />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiKotlin />
+        <DiJavascript1 />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiTypescript />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiPython />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiCplusplus />
+        <SiGo />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiPhp />
       </Col>
 
-      {/* Web Development */}
-      <Col xs={4} md={2} className="tech-icons">
-        <SiHtml5 />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJavascript1 />
-      </Col>
+      {/* Frameworks & Libraries */}
       <Col xs={4} md={2} className="tech-icons">
         <DiReact />
       </Col>
@@ -34,15 +55,33 @@ function Techstack() {
         <DiNodejs />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiBootstrap />
+        <SiDjango />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiTailwindcss />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiFastapi />
       </Col>
 
       {/* Databases */}
       <Col xs={4} md={2} className="tech-icons">
+        <SiPostgresql />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiSupabase />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
         <SiMysql />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
+        <SiMariadb />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
         <DiMongodb />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiRedis />
       </Col>
 
       {/* Version Control */}
@@ -51,9 +90,6 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiGithub />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiGitlab />
       </Col>
     </Row>
   );
