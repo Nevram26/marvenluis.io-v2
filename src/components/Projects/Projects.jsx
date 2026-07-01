@@ -16,18 +16,21 @@ function Projects() {
     <Container fluid className="project-section" id="projects">
       <Particle />
       <Container>
-        <h1 className="project-heading">
-          Professional <strong className="purple">Work </strong>
+        <h1 className="section-heading">
+          <strong className="purple">Projects</strong>
         </h1>
         <p style={{ color: "white" }}>
           Production features I've shipped for government and university platforms.
         </p>
+        <h1 className="project-heading">
+          Professional <strong className="purple">Work </strong>
+        </h1>
         <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
           <Col md={6} className="project-card">
             <ProjectCard
               logoPath={escaLogo}
               title="ESCA — Agricultural Trading Platform"
-              description="ESCA is a government-funded platform that connects farmers directly to buyers so they can sell their produce at fair prices. Farmers, cooperatives, and packing houses can all track produce as it moves from harvest to delivery, which builds trust on both sides of the trade. I built the tools they use day to day: scanning harvests, recording what comes in and goes out, and checking greenhouse conditions. Over 4 months I shipped about 5 features a week."
+              description="ESCA is a government-funded platform that connects farmers directly to buyers so they can sell their produce at fair prices. Farmers, cooperatives, and packing houses can all track produce as it moves from harvest to delivery, which builds trust on both sides of the trade. I build the tools they use day to day: scanning harvests, recording what comes in and goes out, and checking greenhouse conditions. I've been shipping about 5 features a week over the past 4 months."
             />
           </Col>
 
@@ -35,7 +38,7 @@ function Projects() {
             <ProjectCard
               logoPath={panpacificLogo}
               title="Panpacific University — Self-Service CMS"
-              description="A website platform built for Panpacific University so non-technical staff can create and update their own pages without calling a developer. I made reusable content blocks (hero sections, FAQ pages, campus life galleries, student exchange cards) that staff just drop into place to build full pages. Over 7 months I delivered the sections for Academics, Admissions, and Sustainability, plus a program search that lets prospective students filter courses on the site."
+              description="A website platform built for Panpacific University so non-technical staff can create and update their own pages without calling a developer. I make reusable content blocks (hero sections, FAQ pages, campus life galleries, student exchange cards) that staff just drop into place to build full pages. Over the past 7 months I've been delivering the sections for Academics, Admissions, and Sustainability, plus a program search that lets prospective students filter courses on the site."
             />
           </Col>
         </Row>

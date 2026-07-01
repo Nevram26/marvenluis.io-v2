@@ -9,9 +9,12 @@ import Toolstack from "./Toolstack";
 
 function About() {
   return (
-    <Container fluid className="about-section">
+    <Container fluid className="about-section" id="about">
       <Particle />
       <Container>
+        <h1 className="section-heading">
+          <strong className="purple">About</strong> Me
+        </h1>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
             md={7}
