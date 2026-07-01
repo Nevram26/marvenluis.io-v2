@@ -19,27 +19,28 @@ function Home2() {
             LET ME <span className="purple"> INTRODUCE </span> MYSELF
           </h1>
           <p className="home-about-body">
-            I am passionate about developing reliable and user-focused software solutions 🚀
+            I like building software that works well for the people using it.
             <br />
             <br />
             I am proficient in
             <i>
-              <b className="purple"> Java, JavaScript, Python, HTML,</b> and{" "}
-                <b className="purple"> Kotlin</b>
+              <b className="purple"> Java, JavaScript, TypeScript, Python, Go,</b> and{" "}
+                <b className="purple"> PHP</b>
             </i>
             <br />
             <br />
             My areas of interest include&nbsp;
             <i>
-              <b className="purple">Web Development</b> and{" "}
-              <b className="purple">Backend Development</b>
+              <b className="purple">Web Development</b>,{" "}
+              <b className="purple">Backend Development</b>, and{" "}
+              <b className="purple">Mobile Development</b>
             </i>
             <br />
             <br />
             I enjoy building applications using modern tools and technologies like&nbsp;
             <i>
-              <b className="purple">NodeJS, Docker, Git, </b> and{" "}
-              <b className="purple">MongoDB</b>
+              <b className="purple">React, React Native, Django, Supabase, Docker,</b> and{" "}
+              <b className="purple">PostgreSQL</b>
             </i>
           </p>
         </Col>
