@@ -19,7 +19,7 @@ function Home2() {
             LET ME <span className="purple"> INTRODUCE </span> MYSELF
           </h1>
           <p className="home-about-body">
-            I like building software that works well for the people using it.
+            I'm a full-stack developer. I'm currently part of a team building a government-funded agtech platform and a university CMS, both used by real people every day.
             <br />
             <br />
             I am proficient in
@@ -29,7 +29,7 @@ function Home2() {
             </i>
             <br />
             <br />
-            My areas of interest include&nbsp;
+            I work across&nbsp;
             <i>
               <b className="purple">Web Development</b>,{" "}
               <b className="purple">Backend Development</b>, and{" "}
@@ -37,9 +37,9 @@ function Home2() {
             </i>
             <br />
             <br />
-            I enjoy building applications using modern tools and technologies like&nbsp;
+            The tools I reach for most are&nbsp;
             <i>
-              <b className="purple">React, React Native, Django, Supabase, Docker,</b> and{" "}
+              <b className="purple">React, React Native, Django, Node.js, Supabase, Docker,</b> and{" "}
               <b className="purple">PostgreSQL</b>
             </i>
           </p>
