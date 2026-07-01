@@ -22,7 +22,7 @@ function ResumeNew() {
 
   return (
     <div>
-      <Container fluid className="resume-section">
+      <Container fluid className="resume-section" id="resume">
         <Particle />
         <Row className="resume">
           <Document file={pdf} className="d-flex justify-content-center">

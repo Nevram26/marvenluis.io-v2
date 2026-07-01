@@ -3,5 +3,5 @@ import App from './App';
 
 test('renders app with home heading', () => {
   render(<App />);
-  expect(screen.getByText(/Marven Joffre Luis/i)).toBeInTheDocument();
+  expect(screen.getAllByText(/Marven Joffre Luis/i).length).toBeGreaterThan(0);
 });
