@@ -10,7 +10,7 @@ import exitInterview from "../../Assets/Projects/exit-interview.png";
 import lexiLogic from "../../Assets/Projects/lexi-logic.png";
 import seaWater from "../../Assets/Projects/sea-water.png";
 import escaLogo from "../../Assets/Projects/esca-logo.svg";
-import panpacificLogo from "../../Assets/Projects/panpacific-logo.svg";
+import panpacificLogo from "../../Assets/Projects/panpacific-logo.webp";
 
 function Projects() {
   return (

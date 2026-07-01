@@ -494,7 +494,7 @@ button:focus {
 .project-logo {
   max-width: 100% !important;
   max-height: 120px !important;
-  opacity: 0.85 !important;
+  opacity: 1 !important;
   border-radius: 10px !important;
 }
 
