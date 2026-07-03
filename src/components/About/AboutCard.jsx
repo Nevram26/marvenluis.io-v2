@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { ImPointRight } from "react-icons/im";
+import quotes from "../../data/quotes";
 
 function AboutCard() {
+  const [randomQuote] = useState(
+    () => quotes[Math.floor(Math.random() * quotes.length)]
+  );
+
   return (
     <Card className="quote-card-view">
       <Card.Body>
@@ -28,16 +33,16 @@ function AboutCard() {
               <ImPointRight />  Playing Video Games
             </li>
             <li className="about-activity">
-              <ImPointRight />  Playing Sports
+              <ImPointRight />  Sports
             </li>
             <li className="about-activity">
-              <ImPointRight />  Exercising
+              <ImPointRight />  Going to the Gym
             </li>
           </ul>
           <p style={{ color: "rgb(80, 200, 120)" }}>
-            "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+            "{randomQuote.quote}"
           </p>
-          <footer className="blockquote-footer">Martin Fowler</footer>
+          <footer className="blockquote-footer">{randomQuote.author}</footer>
         </blockquote>
       </Card.Body>
     </Card>
