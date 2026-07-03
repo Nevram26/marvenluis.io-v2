@@ -1,62 +1,52 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../shared/Particle";
+import { motion } from "framer-motion";
+import BentoGrid from "./BentoGrid";
 import Github from "./Github";
-import Techstack from "./Techstack";
-import Aboutcard from "./AboutCard";
-import laptopImg from "../../assets/images/about.png";
-import Toolstack from "./Toolstack";
-import Reveal from "../shared/Reveal";
+import { fadeInUp, staggerContainer } from "../../utils/animations";
 
 function About() {
   return (
-    <Container fluid className="about-section">
-      <Particle />
-      <Container id="about">
-        <Reveal>
-          <Row style={{ justifyContent: "center", padding: "10px" }}>
-            <Col
-              md={7}
-              style={{
-                justifyContent: "center",
-                paddingTop: "30px",
-                paddingBottom: "50px",
-              }}
-            >
-              <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-                Know Who <strong className="emerald">I AM</strong>
-              </h1>
-              <Aboutcard />
-            </Col>
-            <Col
-              md={5}
-              style={{ paddingTop: "120px", paddingBottom: "50px" }}
-              className="about-img"
-            >
-              <img src={laptopImg} alt="about" className="img-fluid" />
-            </Col>
-          </Row>
-        </Reveal>
+    <section id="about" className="relative section">
+      <div className="section-padding container-max">
+        {/* Header */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-16"
+        >
+          <motion.h2 variants={fadeInUp} className="text-heading-2 text-center mb-4">
+            Know Who <span className="text-emerald">I AM</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-foreground/70 max-w-2xl mx-auto"
+          >
+            I&apos;m a full-stack developer passionate about building scalable solutions that impact real users.
+          </motion.p>
+        </motion.div>
 
-        <Reveal>
-          <h1 className="project-heading">
-            Professional <strong className="emerald">Skillset </strong>
-          </h1>
-          <Techstack />
-        </Reveal>
+        {/* Bento Grid */}
+        <motion.div className="mb-20">
+          <BentoGrid />
+        </motion.div>
 
-        <Reveal>
-          <h1 className="project-heading">
-            <strong className="emerald">Tools</strong> I use
-          </h1>
-          <Toolstack />
-        </Reveal>
-
-        <Reveal>
+        {/* GitHub Calendar Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-20"
+        >
+          <h2 className="text-heading-2 text-center mb-12 text-foreground">
+            Contribution <span className="text-emerald">Activity</span>
+          </h2>
           <Github />
-        </Reveal>
-      </Container>
-    </Container>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 

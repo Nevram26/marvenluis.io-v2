@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
+import { motion } from "framer-motion";
 import logo from "../assets/images/logo.png";
 import {
   AiOutlineHome,
@@ -9,20 +7,33 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+const navItems = [
+  { label: "Home", href: "#home", icon: AiOutlineHome },
+  { label: "About", href: "#about", icon: AiOutlineUser },
+  { label: "Projects", href: "#projects", icon: AiOutlineFundProjectionScreen },
+  { label: "Resume", href: "#resume", icon: CgFileDocument },
+];
 
 function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     function scrollHandler() {
-      if (window.scrollY >= 20) {
-        updateNavbar(true);
-      } else {
-        updateNavbar(false);
-      }
+      // Check if scrolled past 20px
+      setIsScrolled(window.scrollY >= 20);
+
+      // Calculate scroll progress
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
     }
+
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
@@ -40,83 +51,120 @@ function NavBar() {
       },
       { rootMargin: "-30% 0px -60% 0px" }
     );
+
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
+
     return () => observer.disconnect();
   }, []);
 
+  const handleNavClick = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <Navbar
-      expanded={expand}
-      fixed="top"
-      expand="md"
-      className={navColour ? "sticky" : "navbar"}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-dark-900/80 backdrop-blur-md border-b border-emerald/20 shadow-lg"
+          : "bg-transparent"
+      }`}
     >
-      <Container>
-        <Navbar.Brand href="#home" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : "expanded");
-          }}
+      {/* Scroll progress bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-emerald to-emerald-light"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
+      <div className="section-padding container-max flex items-center justify-between h-20">
+        {/* Logo */}
+        <motion.a
+          href="#home"
+          className="flex items-center gap-2 z-10"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" activeKey={activeSection}>
-            <Nav.Item>
-              <Nav.Link
-                href="#home"
-                active={activeSection === "#home"}
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-              </Nav.Link>
-            </Nav.Item>
+          <img src={logo} alt="logo" className="h-10 w-auto" />
+        </motion.a>
 
-            <Nav.Item>
-              <Nav.Link
-                href="#about"
-                active={activeSection === "#about"}
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
-              </Nav.Link>
-            </Nav.Item>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.href;
 
-            <Nav.Item>
-              <Nav.Link
-                href="#projects"
-                active={activeSection === "#projects"}
-                onClick={() => updateExpanded(false)}
+            return (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                onClick={handleNavClick}
+                className={`relative px-4 py-2 rounded-lg flex items-center gap-2 font-medium transition-all duration-300 ${
+                  isActive
+                    ? "text-dark-950 bg-emerald"
+                    : "text-foreground hover:text-emerald"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
-              </Nav.Link>
-            </Nav.Item>
+                <Icon className="w-4 h-4" />
+                {item.label}
+              </motion.a>
+            );
+          })}
+        </div>
 
-            <Nav.Item>
-              <Nav.Link
-                href="#resume"
-                active={activeSection === "#resume"}
-                onClick={() => updateExpanded(false)}
+        {/* Mobile Menu Button */}
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 text-emerald hover:bg-emerald/10 rounded-lg transition-colors duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
+            <XMarkIcon className="w-6 h-6" />
+          ) : (
+            <Bars3Icon className="w-6 h-6" />
+          )}
+        </motion.button>
+      </div>
+
+      {/* Mobile Navigation */}
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? "auto" : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`md:hidden overflow-hidden bg-dark-900/95 backdrop-blur-md border-b border-emerald/20 ${
+          isOpen ? "block" : "hidden"
+        }`}
+      >
+        <div className="section-padding container-max flex flex-col gap-2 py-4">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.href;
+
+            return (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                onClick={handleNavClick}
+                className={`px-4 py-3 rounded-lg flex items-center gap-3 font-medium transition-all duration-300 ${
+                  isActive
+                    ? "text-dark-950 bg-emerald"
+                    : "text-foreground hover:bg-emerald/10"
+                }`}
+                whileHover={{ x: 5 }}
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
-              </Nav.Link>
-            </Nav.Item>
-
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+                <Icon className="w-5 h-5" />
+                {item.label}
+              </motion.a>
+            );
+          })}
+        </div>
+      </motion.div>
+    </nav>
   );
 }
 

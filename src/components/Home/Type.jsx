@@ -8,12 +8,14 @@ function Type() {
         strings: [
           "Full Stack Developer",
           "React & React Native Developer",
-          "Backend Developer"
+          "Backend Developer",
         ],
         autoStart: true,
         loop: true,
         deleteSpeed: 50,
       }}
+      wrapper="span"
+      cursor={true}
     />
   );
 }
