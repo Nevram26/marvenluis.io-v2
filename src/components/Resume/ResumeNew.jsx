@@ -27,7 +27,7 @@ function ResumeNew() {
         <Particle />
         <Container id="resume">
           <h1 className="section-heading">
-            <strong className="purple">Resume</strong>
+            <strong className="emerald">Resume</strong>
           </h1>
           <Reveal>
             <Row className="resume">

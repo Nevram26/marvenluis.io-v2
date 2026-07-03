@@ -18,7 +18,7 @@ function Home2() {
         <Col md={8} className="home-about-description">
           <Reveal>
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              LET ME <span className="emerald"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
               I'm a full-stack developer. I'm currently part of a team building a government-funded agtech platform and a university CMS, both used by real people every day.
@@ -26,23 +26,23 @@ function Home2() {
               <br />
               I am proficient in
               <i>
-                <b className="purple"> Java, JavaScript, TypeScript, Python, Go,</b> and{" "}
-                  <b className="purple"> PHP</b>
+                <b className="emerald"> Java, JavaScript, TypeScript, Python, Go,</b> and{" "}
+                  <b className="emerald"> PHP</b>
               </i>
               <br />
               <br />
               I work across&nbsp;
               <i>
-                <b className="purple">Web Development</b>,{" "}
-                <b className="purple">Backend Development</b>, and{" "}
-                <b className="purple">Mobile Development</b>
+                <b className="emerald">Web Development</b>,{" "}
+                <b className="emerald">Backend Development</b>, and{" "}
+                <b className="emerald">Mobile Development</b>
               </i>
               <br />
               <br />
               The tools I reach for most are&nbsp;
               <i>
-                <b className="purple">React, React Native, Django, Node.js, Supabase, Docker,</b> and{" "}
-                <b className="purple">PostgreSQL</b>
+                <b className="emerald">React, React Native, Django, Node.js, Supabase, Docker,</b> and{" "}
+                <b className="emerald">PostgreSQL</b>
               </i>
             </p>
           </Reveal>
@@ -59,7 +59,7 @@ function Home2() {
             <Reveal>
               <h1>FIND ME ON</h1>
               <p>
-                Feel free to <span className="purple">connect </span>with me
+                Feel free to <span className="emerald">connect </span>with me
               </p>
               <ul className="home-about-social-links">
                 <li className="social-icons">

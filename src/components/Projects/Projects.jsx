@@ -19,7 +19,7 @@ function Projects() {
       <Container id="projects">
         <Reveal>
           <h1 className="project-heading">
-            Professional <strong className="purple">Work </strong>
+            Professional <strong className="emerald">Work </strong>
           </h1>
           <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
             <Col md={6} className="project-card">
@@ -42,7 +42,7 @@ function Projects() {
 
         <Reveal>
           <h1 className="project-heading">
-            Academic <strong className="purple">Projects </strong>
+            Academic <strong className="emerald">Projects </strong>
           </h1>
           <p style={{ color: "white" }}>
             Here are a few projects I've worked on recently.

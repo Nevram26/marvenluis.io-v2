@@ -17,7 +17,7 @@ html {
     rgba(12, 10, 22, 0.863)
   );
 
-  --imp-text-color: #50C878;
+  --emerald: #50C878;
 }
 
 #home,
@@ -28,8 +28,8 @@ html {
   scroll-margin-top: 80px;
 }
 
-.purple {
-  color: var(--imp-text-color) !important;
+.emerald {
+  color: var(--emerald) !important;
 }
 
 button:focus {

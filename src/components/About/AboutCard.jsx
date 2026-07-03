@@ -13,17 +13,17 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi everyone! I'm <span className="purple">Marven Joffre Luis</span> from
-            <span className="purple"> Isabela, Philippines</span>.
+            Hi everyone! I'm <span className="emerald">Marven Joffre Luis</span> from
+            <span className="emerald"> Isabela, Philippines</span>.
             <br />
-            I recently graduated with a Bachelor’s degree in <span className="purple">Computer Science</span> from
-            <span className="purple"> Saint Louis University</span>, where I was a Dean’s Lister for 7 of 8 semesters.
+            I recently graduated with a Bachelor’s degree in <span className="emerald">Computer Science</span> from
+            <span className="emerald"> Saint Louis University</span>, where I was a Dean’s Lister for 7 of 8 semesters.
             <br />
             <br />
             I'm a full-stack developer. My recent work has been on two platforms: a government-funded agtech app that helps farmers get paid fairly, and a university CMS that lets staff publish their own pages without needing a developer. I like writing code that other people can read and maintain.
             <br />
             <br />
-            <span className="purple">3rd Place, 2025 Meralco IDOL Hackathon</span> · Certified Lean Six Sigma Yellow Belt · Project Management Fundamentals Certified
+            <span className="emerald">3rd Place, 2025 Meralco IDOL Hackathon</span> · Certified Lean Six Sigma Yellow Belt · Project Management Fundamentals Certified
             <br />
             <br />
             Outside of coding, here are a few things I enjoy:
