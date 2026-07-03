@@ -1,16 +1,16 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
-import Particle from "../Particle";
-import Reveal from "../Reveal";
-import stockPilot from "../../Assets/Projects/stock-pilot.png";
-import amalzen from "../../Assets/Projects/amalzen-dx.png";
-import cache from "../../Assets/Projects/cache-game.png";
-import exitInterview from "../../Assets/Projects/exit-interview.png";
-import lexiLogic from "../../Assets/Projects/lexi-logic.png";
-import seaWater from "../../Assets/Projects/sea-water.png";
-import escaLogo from "../../Assets/Projects/esca-logo.svg";
-import panpacificLogo from "../../Assets/Projects/panpacific-logo.webp";
+import Particle from "../shared/Particle";
+import Reveal from "../shared/Reveal";
+import stockPilot from "../../assets/projects/stock-pilot.png";
+import amalzen from "../../assets/projects/amalzen-dx.png";
+import cache from "../../assets/projects/cache-game.png";
+import exitInterview from "../../assets/projects/exit-interview.png";
+import lexiLogic from "../../assets/projects/lexi-logic.png";
+import seaWater from "../../assets/projects/sea-water.png";
+import escaLogo from "../../assets/projects/esca-logo.svg";
+import panpacificLogo from "../../assets/projects/panpacific-logo.webp";
 
 function Projects() {
   return (
