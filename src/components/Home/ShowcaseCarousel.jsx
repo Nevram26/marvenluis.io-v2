@@ -44,7 +44,7 @@ const showcaseItems = [
 
 export default function ShowcaseCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center" },
+    { loop: true, align: "center", duration: 45 },
     [Autoplay({ delay: 4000, stopOnInteraction: true })]
   );
   const [canScrollNext, setCanScrollNext] = useState(false);

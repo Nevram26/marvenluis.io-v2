@@ -31,7 +31,7 @@ const featuredProjects = [
 
 export default function FeaturedCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center" },
+    { loop: true, align: "center", duration: 45 },
     [Autoplay({ delay: 5000, stopOnInteraction: true })]
   );
   const [canScrollNext, setCanScrollNext] = useState(false);
