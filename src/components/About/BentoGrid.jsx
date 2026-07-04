@@ -13,6 +13,9 @@ import {
   FaLinux,
   FaWindows,
   FaCode,
+  FaStar,
+  FaTrophy,
+  FaUser,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -70,7 +73,7 @@ const BentoGrid = () => {
         variants={scaleIn}
         className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
       >
-        <div className="text-4xl mb-4 text-emerald">👋</div>
+        <div className="text-4xl mb-4 text-emerald"><FaUser /></div>
         <h3 className="text-xl font-bold text-foreground mb-3">About Me</h3>
         <p className="text-foreground/80 text-sm leading-relaxed">
           Full-stack developer building real-world solutions. Currently working on government-funded agtech platform and university CMS systems.
@@ -82,12 +85,11 @@ const BentoGrid = () => {
         variants={scaleIn}
         className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
       >
-        <div className="text-4xl mb-4 text-emerald">🏆</div>
+        <div className="text-4xl mb-4 text-emerald"><FaTrophy /></div>
         <h3 className="text-xl font-bold text-foreground mb-3">Achievements</h3>
         <ul className="text-foreground/80 text-sm space-y-2">
           <li>• 3rd Place - 2025 Meralco IDOL Hackathon</li>
           <li>• Dean&apos;s Lister (7/8 semesters)</li>
-          <li>• Multiple shipped products in production</li>
         </ul>
       </motion.div>
 
@@ -96,7 +98,7 @@ const BentoGrid = () => {
         variants={scaleIn}
         className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
       >
-        <div className="text-4xl mb-4 text-emerald">⚙️</div>
+        <div className="text-4xl mb-4 text-emerald"><FaCode /></div>
         <h3 className="text-xl font-bold text-foreground mb-3">Specializations</h3>
         <ul className="text-foreground/80 text-sm space-y-2">
           <li>• Web Development</li>
@@ -159,13 +161,13 @@ const BentoGrid = () => {
         variants={scaleIn}
         className="group sm:col-span-2 lg:col-span-3 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
       >
-        <div className="text-4xl mb-4 text-emerald">🌟</div>
+        <div className="text-4xl mb-4 text-emerald"><FaStar /></div>
         <h3 className="text-xl font-bold text-foreground mb-3">When I&apos;m Not Coding</h3>
         <p className="text-foreground/80 text-sm leading-relaxed mb-3">
           I enjoy exploring new technologies, contributing to open-source projects, and staying updated with industry trends. I&apos;m passionate about creating clean, maintainable code and mentoring other developers.
         </p>
         <div className="flex flex-wrap gap-2">
-          {["📚 Reading", "🎮 Gaming", "🏋️ Gym", "🌍 Travel"].map(
+          {["Reading", "Gaming", "Gym", "Travel"].map(
             (hobby) => (
               <span
                 key={hobby}

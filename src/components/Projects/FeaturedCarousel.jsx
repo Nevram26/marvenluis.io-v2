@@ -120,7 +120,7 @@ export default function FeaturedCarousel() {
                     className="mb-6"
                   >
                     <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald/20 border border-emerald/50 text-emerald text-xs font-semibold uppercase tracking-wide">
-                      ✨ {project.impact}
+                      {project.impact}
                     </span>
                   </motion.div>
 
