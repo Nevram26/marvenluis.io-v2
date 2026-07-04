@@ -25,11 +25,11 @@ export default function AmbientBackground() {
 
         {/* Animated spotlight effect */}
         <motion.div
-          className="absolute w-64 h-64 rounded-full opacity-20"
+          className="absolute w-32 h-32 rounded-full opacity-20"
           style={{
             background: "radial-gradient(circle, rgba(16, 185, 129, 0.3), transparent)",
-            x: spotlightPos.x - 128,
-            y: spotlightPos.y - 128,
+            x: spotlightPos.x - 64,
+            y: spotlightPos.y - 64,
             pointerEvents: "none",
           }}
           transition={{ type: "spring", stiffness: 50, damping: 30 }}
