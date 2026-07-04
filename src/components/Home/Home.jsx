@@ -22,7 +22,7 @@ function Home() {
           >
             <motion.h1
               variants={fadeInUp}
-              className="text-heading-1 mb-4 mt-12 md:mt-8 text-foreground"
+              className="text-heading-1 mb-4 mt-20 md:mt-16 text-foreground"
             >
               Hi There!
             </motion.h1>
