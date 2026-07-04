@@ -11,6 +11,7 @@ import {
   FaDocker,
   FaGit,
   FaLinux,
+  FaWindows,
   FaCode,
 } from "react-icons/fa";
 import {
@@ -19,7 +20,13 @@ import {
   SiSupabase,
   SiPostgresql,
   SiGo,
+  SiGithub,
+  SiIntellijidea,
+  SiTrello,
+  SiVercel,
+  SiObsidian,
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 import { staggerContainer, fadeInUp, scaleIn } from "../../utils/animations";
 
 const BentoGrid = () => {
@@ -41,6 +48,13 @@ const BentoGrid = () => {
     { name: "PostgreSQL", icon: SiPostgresql },
     { name: "Docker", icon: FaDocker },
     { name: "Git", icon: FaGit },
+    { name: "GitHub", icon: SiGithub },
+    { name: "VSCode", icon: VscVscode },
+    { name: "IntelliJ", icon: SiIntellijidea },
+    { name: "Windows", icon: FaWindows },
+    { name: "Trello", icon: SiTrello },
+    { name: "Vercel", icon: SiVercel },
+    { name: "Obsidian", icon: SiObsidian },
   ];
 
   return (
@@ -124,7 +138,7 @@ const BentoGrid = () => {
       >
         <h3 className="text-xl font-bold text-foreground mb-4">Tools & Frameworks</h3>
         <div className="grid grid-cols-4 gap-2">
-          {toolStack.slice(0, 8).map((tool) => {
+          {toolStack.map((tool) => {
             const Icon = tool.icon;
             return (
               <motion.div
