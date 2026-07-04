@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Preloader from "./components/shared/Pre";
 import AmbientBackground from "./components/shared/AmbientBackground";
 import Navbar from "./components/Navbar";
@@ -28,6 +29,7 @@ function App() {
         <About />
         <Projects />
       </div>
+      <Analytics />
     </>
   );
 }
