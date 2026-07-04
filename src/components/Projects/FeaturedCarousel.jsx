@@ -69,7 +69,7 @@ export default function FeaturedCarousel() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br from-emerald-500/10 to-dark-900 backdrop-blur-md p-8 md:p-12 lg:p-16 min-h-96 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow">
+              <div className="group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br from-emerald-500/10 to-dark-900 backdrop-blur-md p-6 md:p-8 lg:p-12 min-h-80 sm:min-h-96 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow">
                 {/* Background decoration */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500">
                   <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-emerald rounded-full blur-3xl" />
@@ -101,7 +101,7 @@ export default function FeaturedCarousel() {
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="mb-6 flex-grow"
                   >
-                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2">
                       {project.title}
                     </h3>
                     <p className="text-emerald text-sm font-semibold uppercase tracking-wider mb-4">
