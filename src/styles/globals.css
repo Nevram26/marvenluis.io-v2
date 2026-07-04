@@ -160,14 +160,6 @@ a {
   @apply shadow-emerald-glow;
 }
 
-.border-emerald {
-  @apply border border-emerald;
-}
-
-.border-emerald-light {
-  @apply border border-emerald-light;
-}
-
 /* ============================================ */
 /* Animations */
 /* ============================================ */
@@ -178,10 +170,6 @@ a {
 
 .animate-slide-up {
   @apply translate-y-7 opacity-0 animate-[slideUp_0.6s_ease-out_forwards];
-}
-
-.animate-glow-pulse {
-  @apply animate-glow-pulse;
 }
 
 /* ============================================ */
