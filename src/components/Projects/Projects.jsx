@@ -1,110 +1,137 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
+import FeaturedCarousel from "./FeaturedCarousel";
 import ProjectCard from "./ProjectCards";
-import Particle from "../shared/Particle";
-import Reveal from "../shared/Reveal";
+import {
+  staggerContainer,
+  fadeInUp,
+  scaleIn,
+} from "../../utils/animations";
 import stockPilot from "../../assets/projects/stock-pilot.png";
 import amalzen from "../../assets/projects/amalzen-dx.png";
 import cache from "../../assets/projects/cache-game.png";
 import exitInterview from "../../assets/projects/exit-interview.png";
 import lexiLogic from "../../assets/projects/lexi-logic.png";
 import seaWater from "../../assets/projects/sea-water.png";
-import escaLogo from "../../assets/projects/esca-logo.svg";
-import panpacificLogo from "../../assets/projects/panpacific-logo.webp";
+
+const academicProjects = [
+  {
+    id: 1,
+    imgPath: stockPilot,
+    title: "Stock Pilot",
+    description:
+      "An inventory management system built in Java for three user roles: Purchases, Sales, and Admin. Each role gets its own tools for tracking stock and updating inventory.",
+    ghLink: "https://github.com/Nevram26/InventoryManagement",
+    tech: ["Java", "GUI"],
+  },
+  {
+    id: 2,
+    imgPath: lexiLogic,
+    title: "Lexi Logic: Boggle Word Game",
+    description:
+      "A multiplayer word game where players type words that appear on screen and the highest score wins. Duplicate entries don't count, rewarding good vocabulary and fast thinking.",
+    ghLink: "https://github.com/Nevram26/lexi-logic",
+    tech: ["React", "WebSocket"],
+  },
+  {
+    id: 3,
+    imgPath: seaWater,
+    title: "SEA Water: SDG 6.0",
+    description:
+      "An infographic website about water scarcity in the Philippines. Covers ongoing projects, partnerships, and resources related to UN Sustainable Development Goal 6.",
+    ghLink: "https://github.com/Nevram26/SEA_water",
+    tech: ["React", "Design"],
+  },
+  {
+    id: 4,
+    imgPath: amalzen,
+    title: "AmalzenDX: Disease Diagnosis",
+    description:
+      "A symptom checker where you enter what you're feeling and it suggests a possible diagnosis based on rule-based logic. Matches symptoms against medical rules.",
+    ghLink: "https://github.com/Benny-Gil/Amalzen-Disease-Diagnosis",
+    tech: ["React", "Logic"],
+  },
+  {
+    id: 5,
+    imgPath: exitInterview,
+    title: "Exit-Interview Platform",
+    description:
+      "A dual-backend exit-interview platform (Node.js + PHP/Apache, MariaDB, Docker Compose), shortlisted for university-wide adoption. Led refactor of 9,800 lines across 88 files.",
+    ghLink: "https://github.com/loudiman/Exit-Interview-Question",
+    tech: ["Node.js", "Docker", "PHP"],
+  },
+  {
+    id: 6,
+    imgPath: cache,
+    title: "Cache Game",
+    description:
+      "A 6-service microservices architecture (Java/JavaFX, Go services, Node.js REST API, MongoDB) containerized with Docker Compose. Designed MongoDB data-access layer for auth and game history.",
+    ghLink: "https://github.com/VladTemp27/cache-game",
+    tech: ["Microservices", "Docker", "MongoDB"],
+  },
+];
 
 function Projects() {
   return (
-    <Container fluid className="project-section">
-      <Particle />
-      <Container id="projects">
-        <Reveal>
-          <h1 className="project-heading">
-            Professional <strong className="emerald">Work </strong>
-          </h1>
-          <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
-            <Col md={6} className="project-card">
-              <ProjectCard
-                logoPath={escaLogo}
-                title="ESCA — Agricultural Trading Platform"
-                description="ESCA is a government-funded platform that connects farmers directly to buyers so they can sell their produce at fair prices. Farmers, cooperatives, and packing houses can all track produce as it moves from harvest to delivery, which builds trust on both sides of the trade. I build the tools they use day to day: scanning harvests, recording what comes in and goes out, and checking greenhouse conditions. I've been shipping about 5 features a week over the past 4 months."
-              />
-            </Col>
+    <section id="projects" className="relative section">
+      <div className="section-padding container-max">
+        {/* Professional Projects Section */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-24"
+        >
+          <motion.h2 variants={fadeInUp} className="text-heading-2 text-center mb-4">
+            Professional <span className="text-emerald">Work</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-foreground/70 mb-12 max-w-2xl mx-auto"
+          >
+            Building real-world solutions for government-funded and enterprise platforms
+          </motion.p>
+          <FeaturedCarousel />
+        </motion.div>
 
-            <Col md={6} className="project-card">
-              <ProjectCard
-                logoPath={panpacificLogo}
-                title="Panpacific University — Self-Service CMS"
-                description="A website platform built for Panpacific University so non-technical staff can create and update their own pages without calling a developer. I make reusable content blocks (hero sections, FAQ pages, campus life galleries, student exchange cards) that staff just drop into place to build full pages. Over the past 7 months I've been delivering the sections for Academics, Admissions, and Sustainability, plus a program search that lets prospective students filter courses on the site."
-              />
-            </Col>
-          </Row>
-        </Reveal>
+        {/* Academic Projects Section */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.h2 variants={fadeInUp} className="text-heading-2 text-center mb-4">
+            Academic <span className="text-emerald">Projects</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-center text-foreground/70 mb-12 max-w-2xl mx-auto"
+          >
+            A selection of projects developed during my computer science studies
+          </motion.p>
 
-        <Reveal>
-          <h1 className="project-heading">
-            Academic <strong className="emerald">Projects </strong>
-          </h1>
-          <p style={{ color: "white" }}>
-            Here are a few projects I've worked on recently.
-          </p>
-          <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={stockPilot}
-                title="Stock Pilot"
-                description="An inventory management system built in Java for three user roles: Purchases, Sales, and Admin. Each role gets its own tools for tracking stock and updating inventory. The system keeps data consistent across all roles so nobody is working from stale numbers."
-                ghLink="https://github.com/Nevram26/InventoryManagement"
-              />
-            </Col>
-
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={lexiLogic}
-                title="Lexi Logic: Boggle Word Game"
-                description="A multiplayer word game where players type words that appear on screen and the highest score wins. Duplicate entries don't count, so players have to find unique words. It rewards a good vocabulary and fast thinking."
-                ghLink="https://github.com/Nevram26/lexi-logic"
-              />
-            </Col>
-
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={seaWater}
-                title="SEA Water: SDG 6.0"
-                description="An infographic website about water scarcity in the Philippines. It covers ongoing projects, partnerships, and resources related to UN Sustainable Development Goal 6 (Clean Water and Sanitation). The site uses visual content to make the issue easier to understand and act on."
-                ghLink="https://github.com/Nevram26/SEA_water"
-              />
-            </Col>
-
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={amalzen}
-                title="AmalzenDX: Disease Diagnosis"
-                description="A symptom checker where you enter what you're feeling and it suggests a possible diagnosis based on rule-based logic. It matches symptoms against a set of medical rules to narrow down what the condition might be."
-                ghLink="https://github.com/Benny-Gil/Amalzen-Disease-Diagnosis"
-              />
-            </Col>
-
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={exitInterview}
-                title="Exit-Interview Platform"
-                description="A dual-backend exit-interview platform (Node.js + PHP/Apache behind an Nginx reverse proxy, MariaDB, Docker Compose), shortlisted for university-wide adoption. Led a refactor consolidating ~9,800 lines of legacy code across 88 files into a maintainable architecture."
-                ghLink="https://github.com/loudiman/Exit-Interview-Question"
-              />
-            </Col>
-
-            <Col md={4} className="project-card">
-              <ProjectCard
-                imgPath={cache}
-                title="Cache Game"
-                description="A 6-service microservices architecture (Java/JavaFX client, 2 Go services for real-time WebSocket gameplay and matchmaking, Node.js REST API, MongoDB, Nginx) containerized with Docker Compose. Designed the MongoDB data-access layer for auth, game history, and score updates via upsert patterns."
-                ghLink="https://github.com/VladTemp27/cache-game"
-              />
-            </Col>
-          </Row>
-        </Reveal>
-      </Container>
-    </Container>
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {academicProjects.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                variants={scaleIn}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <ProjectCard
+                  imgPath={project.imgPath}
+                  title={project.title}
+                  description={project.description}
+                  ghLink={project.ghLink}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
