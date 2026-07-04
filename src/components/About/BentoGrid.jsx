@@ -164,7 +164,7 @@ const BentoGrid = () => {
         <div className="text-4xl mb-4 text-emerald"><FaStar /></div>
         <h3 className="text-xl font-bold text-foreground mb-3">When I&apos;m Not Coding</h3>
         <p className="text-foreground/80 text-sm leading-relaxed mb-3">
-          I enjoy exploring new technologies, contributing to open-source projects, and staying updated with industry trends. I&apos;m passionate about creating clean, maintainable code and mentoring other developers.
+        Beyond software development, I value a well-rounded and active lifestyle. I maintain discipline through a structured upper and lower training routine, and I enjoy engaging with complex mechanics and strategy through PC gaming. To keep my perspective fresh and fuel my curiosity, I also spend my downtime traveling, reading, and tinkering with various setups to understand how systems work from the inside out.
         </p>
         <div className="flex flex-wrap gap-2">
           {["Reading", "Gaming", "Gym", "Travel"].map(
