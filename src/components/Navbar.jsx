@@ -6,14 +6,12 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
-import { CgFileDocument } from "react-icons/cg";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navItems = [
   { label: "Home", href: "#home", icon: AiOutlineHome },
   { label: "About", href: "#about", icon: AiOutlineUser },
   { label: "Projects", href: "#projects", icon: AiOutlineFundProjectionScreen },
-  { label: "Resume", href: "#resume", icon: CgFileDocument },
 ];
 
 function NavBar() {
@@ -40,7 +38,7 @@ function NavBar() {
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const sectionIds = ["home", "about", "projects", "resume"];
+    const sectionIds = ["home", "about", "projects"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

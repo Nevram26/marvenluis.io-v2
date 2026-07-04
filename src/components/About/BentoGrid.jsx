@@ -165,7 +165,7 @@ const BentoGrid = () => {
           I enjoy exploring new technologies, contributing to open-source projects, and staying updated with industry trends. I&apos;m passionate about creating clean, maintainable code and mentoring other developers.
         </p>
         <div className="flex flex-wrap gap-2">
-          {["🧗 Rock Climbing", "📚 Reading", "🎮 Gaming", "💡 Tinkering", "🌍 Travel"].map(
+          {["📚 Reading", "🎮 Gaming", "🏋️ Gym", "🌍 Travel"].map(
             (hobby) => (
               <span
                 key={hobby}

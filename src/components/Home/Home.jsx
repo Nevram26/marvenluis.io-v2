@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import homeLogo from "../../assets/images/home-main.svg";
+import avatar from "../../assets/images/avatar.svg";
+import resumePdf from "../../assets/documents/Marven_Luis_Resume.pdf";
 import Home2 from "./Home2";
 import Type from "./Type";
 import { staggerContainer, fadeInUp, slideInRight } from "../../utils/animations";
@@ -55,7 +56,7 @@ function Home() {
                 View My Work
               </motion.a>
               <motion.a
-                href="/Marven_Luis_Resume.pdf"
+                href={resumePdf}
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -75,8 +76,8 @@ function Home() {
             className="flex justify-center lg:justify-end"
           >
             <motion.img
-              src={homeLogo}
-              alt="developer illustration"
+              src={avatar}
+              alt="Marven Luis"
               className="w-full max-w-sm h-auto"
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
