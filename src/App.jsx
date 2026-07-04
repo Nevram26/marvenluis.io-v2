@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Preloader from "./components/shared/Pre";
 import AmbientBackground from "./components/shared/AmbientBackground";
 import Navbar from "./components/Navbar";
@@ -30,6 +31,7 @@ function App() {
         <Projects />
       </div>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
