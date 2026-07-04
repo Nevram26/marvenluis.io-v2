@@ -11,7 +11,7 @@ function Home() {
     <section id="home" className="relative min-h-screen">
       {/* Hero Content */}
       <div className="relative z-10 section-padding section container-max">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Content */}
           <motion.div
             variants={staggerContainer}
@@ -88,7 +88,7 @@ function Home() {
         {/* Floating Social Icons */}
         <motion.div
           variants={fadeInUp}
-          className="mt-16 flex justify-center gap-6"
+          className="mt-8 sm:mt-16 flex justify-center gap-4 sm:gap-6"
         >
           <motion.a
             href="https://github.com/Nevram26"

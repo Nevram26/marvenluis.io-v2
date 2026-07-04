@@ -76,7 +76,7 @@ function NavBar() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div className="section-padding container-max flex items-center justify-between h-20">
+      <div className="section-padding container-max flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <motion.a
           href="#home"

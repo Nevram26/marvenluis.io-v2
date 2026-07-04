@@ -66,7 +66,7 @@ const BentoGrid = () => {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
     >
       {/* Bio Tile */}
       <motion.div
@@ -113,7 +113,7 @@ const BentoGrid = () => {
         className="group sm:col-span-2 lg:col-span-2 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
       >
         <h3 className="text-xl font-bold text-foreground mb-4">Languages</h3>
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
           {techStack.map((tech, idx) => {
             const Icon = tech.icon;
             return (

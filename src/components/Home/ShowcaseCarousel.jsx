@@ -83,7 +83,7 @@ export default function ShowcaseCarousel() {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
             >
               <div
-                className={`group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br ${item.color} backdrop-blur-md p-8 md:p-10 h-full min-h-64 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow`}
+                className={`group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br ${item.color} backdrop-blur-md p-6 md:p-8 lg:p-10 h-full min-h-64 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow`}
               >
                 {/* Background decoration */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
@@ -100,7 +100,7 @@ export default function ShowcaseCarousel() {
                     <p className="text-emerald text-sm font-semibold uppercase tracking-wider mb-2">
                       {item.subtitle}
                     </p>
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
                       {item.title}
                     </h3>
                     <p className="text-foreground/80 leading-relaxed">

@@ -23,7 +23,7 @@ function ProjectCards(props) {
           <motion.img
             src={props.imgPath}
             alt="project"
-            className="w-full h-48 object-cover rounded-lg mb-6 group-hover:brightness-110 transition-all duration-300"
+            className="w-full h-40 sm:h-48 object-cover rounded-lg mb-6 group-hover:brightness-110 transition-all duration-300"
           />
         )}
         {props.logoPath && !props.imgPath && (
