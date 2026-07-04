@@ -4,7 +4,6 @@ import {
   FaJava,
   FaJsSquare,
   FaPython,
-  FaGolang,
   FaPhp,
   FaReact,
   FaNodeJs,
@@ -19,8 +18,7 @@ import {
   SiDjango,
   SiSupabase,
   SiPostgresql,
-  SiNativewind,
-  SiVite,
+  SiGo,
 } from "react-icons/si";
 import { staggerContainer, fadeInUp, scaleIn } from "../../utils/animations";
 
@@ -30,7 +28,7 @@ const BentoGrid = () => {
     { name: "JavaScript", icon: FaJsSquare },
     { name: "TypeScript", icon: SiTypescript },
     { name: "Python", icon: FaPython },
-    { name: "Go", icon: FaGolang },
+    { name: "Go", icon: SiGo },
     { name: "PHP", icon: FaPhp },
   ];
 
