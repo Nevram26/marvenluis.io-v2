@@ -62,12 +62,9 @@ export default function FeaturedCarousel() {
       <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
         <div className="flex">
           {featuredProjects.map((project) => (
-            <motion.div
+            <div
               key={project.id}
               className="flex-[0_0_100%] px-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
             >
               <div className="group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br from-emerald-500/10 to-dark-900 backdrop-blur-md p-6 md:p-8 lg:p-12 min-h-80 sm:min-h-96 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow">
                 {/* Background decoration */}
@@ -142,7 +139,7 @@ export default function FeaturedCarousel() {
                   </motion.div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

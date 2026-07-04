@@ -75,12 +75,9 @@ export default function ShowcaseCarousel() {
       <div className="overflow-hidden rounded-xl" ref={emblaRef}>
         <div className="flex">
           {showcaseItems.map((item, idx) => (
-            <motion.div
+            <div
               key={item.id}
               className="flex-[0_0_100%] sm:flex-[0_0_90%] lg:flex-[0_0_70%] px-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
             >
               <div
                 className={`group relative overflow-hidden rounded-2xl border border-emerald/30 bg-gradient-to-br ${item.color} backdrop-blur-md p-6 md:p-8 lg:p-10 h-full min-h-64 flex flex-col justify-between transition-all duration-500 hover:border-emerald hover:shadow-emerald-glow`}
@@ -106,7 +103,7 @@ export default function ShowcaseCarousel() {
                     <p className="text-foreground/80 leading-relaxed">
                       {item.description}
                     </p>
-                  </motion.div>
+            </motion.div>
                 </div>
 
                 {/* Index indicator */}
@@ -114,7 +111,7 @@ export default function ShowcaseCarousel() {
                   {String(idx + 1).padStart(2, "0")} / {String(showcaseItems.length).padStart(2, "0")}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
