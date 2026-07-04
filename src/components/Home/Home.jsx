@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import avatar from "../../assets/images/avatar.svg";
 import resumePdf from "../../assets/documents/Marven_Luis_Resume.pdf";
 import Home2 from "./Home2";
@@ -75,13 +76,13 @@ function Home() {
             viewport={{ once: true, margin: "-100px" }}
             className="flex justify-center lg:justify-end"
           >
-            <motion.img
-              src={avatar}
-              alt="Marven Luis"
-              className="w-full max-w-sm h-auto"
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <Tilt className="w-full max-w-sm">
+              <img
+                src={avatar}
+                alt="Marven Luis"
+                className="w-full h-auto"
+              />
+            </Tilt>
           </motion.div>
         </div>
 
