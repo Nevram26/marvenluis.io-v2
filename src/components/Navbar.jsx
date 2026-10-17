@@ -5,6 +5,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function NavBar() {
@@ -23,7 +24,7 @@ function NavBar() {
               {item.label}
             </a>
           ))}
-          <a href="mailto:marvenjoffreluis@gmail.com" className="button button-primary">
+          <a href="#contact" className="button button-primary">
             Let&apos;s talk
           </a>
         </div>
@@ -47,7 +48,7 @@ function NavBar() {
                 {item.label}
               </a>
             ))}
-            <a href="mailto:marvenjoffreluis@gmail.com" className="button button-primary mt-2">Let&apos;s talk</a>
+            <a href="#contact" onClick={() => setIsOpen(false)} className="button button-primary mt-2">Let&apos;s talk</a>
           </div>
         </div>
       ) : null}
