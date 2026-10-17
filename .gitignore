@@ -11,6 +11,10 @@
 # production
 /build
 /dist
+/.next
+/out
+*.tsbuildinfo
+next-env.d.ts
 
 # misc
 .DS_Store
