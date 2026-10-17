@@ -24,6 +24,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid hsl(var(--primary)); 
 
 #home, #about, #experience, #projects { scroll-margin-top: 64px; }
 
+.hero-section { position: relative; overflow: hidden; }
+.hero-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(hsl(var(--primary) / .035) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary) / .035) 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 78%); }
+.hero-orb { position: absolute; border-radius: 999px; pointer-events: none; filter: blur(2px); animation: drift 9s ease-in-out infinite; }
+.hero-orb-one { right: 6%; top: 8%; width: 20rem; height: 20rem; background: hsl(var(--secondary) / .8); }
+.hero-orb-two { right: 32%; bottom: 8%; width: 8rem; height: 8rem; border: 1px solid hsl(var(--primary) / .14); background: hsl(var(--background) / .6); animation-delay: -3s; }
+.profile-card { position: relative; background: hsl(var(--background) / .88); backdrop-filter: blur(12px); }
+.profile-visual { position: relative; display: flex; min-height: 17rem; align-items: end; overflow: hidden; border-bottom: 1px solid hsl(var(--border)); background: linear-gradient(145deg, hsl(157 35% 93%), hsl(77 25% 94%)); padding: 1.25rem 1.25rem 0; }
+.profile-visual::after { content: ""; position: absolute; top: 1.5rem; right: 1.5rem; width: 4.5rem; height: 4.5rem; border: 1px solid hsl(var(--primary) / .22); border-radius: 999px; animation: pulse-ring 3.5s ease-in-out infinite; }
+
+@keyframes drift { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -14px, 0); } }
+@keyframes pulse-ring { 0%, 100% { transform: scale(.9); opacity: .45; } 50% { transform: scale(1.12); opacity: .9; } }
+
 @layer utilities {
   .bg-background { background-color: hsl(var(--background)); }
   .bg-surface { background-color: hsl(var(--surface)); }
