@@ -1,186 +1,35 @@
 import React from "react";
-import { motion } from "framer-motion";
-import {
-  FaJava,
-  FaJsSquare,
-  FaPython,
-  FaPhp,
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaDocker,
-  FaGit,
-  FaLinux,
-  FaWindows,
-  FaCode,
-  FaStar,
-  FaTrophy,
-  FaUser,
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiDjango,
-  SiSupabase,
-  SiPostgresql,
-  SiGo,
-  SiGithub,
-  SiIntellijidea,
-  SiTrello,
-  SiVercel,
-  SiObsidian,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
-import { staggerContainer, fadeInUp, scaleIn } from "../../utils/animations";
+import { AcademicCapIcon, CodeBracketIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 
-const BentoGrid = () => {
-  const techStack = [
-    { name: "Java", icon: FaJava },
-    { name: "JavaScript", icon: FaJsSquare },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "Python", icon: FaPython },
-    { name: "Go", icon: SiGo },
-    { name: "PHP", icon: FaPhp },
-  ];
+const languages = ["JavaScript", "TypeScript", "Java", "Python", "Go", "PHP"];
+const platforms = ["React", "React Native", "Node.js", "Django", "PostgreSQL", "Supabase", "Docker", "Git"];
 
-  const toolStack = [
-    { name: "React", icon: FaReact },
-    { name: "React Native", icon: FaReact },
-    { name: "Node.js", icon: FaNodeJs },
-    { name: "Django", icon: SiDjango },
-    { name: "Supabase", icon: SiSupabase },
-    { name: "PostgreSQL", icon: SiPostgresql },
-    { name: "Docker", icon: FaDocker },
-    { name: "Git", icon: FaGit },
-    { name: "GitHub", icon: SiGithub },
-    { name: "VSCode", icon: VscVscode },
-    { name: "IntelliJ", icon: SiIntellijidea },
-    { name: "Windows", icon: FaWindows },
-    { name: "Trello", icon: SiTrello },
-    { name: "Vercel", icon: SiVercel },
-    { name: "Obsidian", icon: SiObsidian },
-  ];
+const strengths = [
+  { icon: CodeBracketIcon, title: "End-to-end delivery", body: "From interface and API design to data models, testing, and deployment." },
+  { icon: UserGroupIcon, title: "Team-minded", body: "Clear communication, thoughtful handoffs, and solutions that others can maintain." },
+  { icon: AcademicCapIcon, title: "Always learning", body: "Dean’s Lister for 7 of 8 semesters and a 2025 Meralco IDOL Hackathon awardee." },
+];
 
+function BentoGrid() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
-    >
-      {/* Bio Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <div className="text-4xl mb-4 text-emerald"><FaUser /></div>
-        <h3 className="text-xl font-bold text-foreground mb-3">About Me</h3>
-        <p className="text-foreground/80 text-sm leading-relaxed">
-          Full-stack developer building real-world solutions. Currently working on government-funded agtech platform and university CMS systems.
-        </p>
-      </motion.div>
-
-      {/* Achievements Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <div className="text-4xl mb-4 text-emerald"><FaTrophy /></div>
-        <h3 className="text-xl font-bold text-foreground mb-3">Achievements</h3>
-        <ul className="text-foreground/80 text-sm space-y-2">
-          <li>• 3rd Place - 2025 Meralco IDOL Hackathon</li>
-          <li>• Dean&apos;s Lister (7/8 semesters)</li>
-        </ul>
-      </motion.div>
-
-      {/* Specializations Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <div className="text-4xl mb-4 text-emerald"><FaCode /></div>
-        <h3 className="text-xl font-bold text-foreground mb-3">Specializations</h3>
-        <ul className="text-foreground/80 text-sm space-y-2">
-          <li>• Web Development</li>
-          <li>• Backend Development</li>
-          <li>• Mobile Development</li>
-        </ul>
-      </motion.div>
-
-      {/* Tech Stack Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-2 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <h3 className="text-xl font-bold text-foreground mb-4">Languages</h3>
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
-          {techStack.map((tech, idx) => {
-            const Icon = tech.icon;
-            return (
-              <motion.div
-                key={tech.name}
-                variants={fadeInUp}
-                className="flex flex-col items-center justify-center p-3 rounded-lg border border-emerald/20 hover:border-emerald hover:bg-emerald/10 transition-all duration-300 group/item"
-                whileHover={{ scale: 1.1 }}
-              >
-                <Icon className="text-2xl text-emerald mb-2" />
-                <span className="text-xs text-foreground/70 text-center">
-                  {tech.name}
-                </span>
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.div>
-
-      {/* Tools & Frameworks Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-1 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <h3 className="text-xl font-bold text-foreground mb-4">Tools & Frameworks</h3>
-        <div className="grid grid-cols-4 gap-2">
-          {toolStack.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <motion.div
-                key={tool.name}
-                className="flex justify-center"
-                whileHover={{ scale: 1.15 }}
-                title={tool.name}
-              >
-                <Icon className="text-2xl text-emerald" />
-              </motion.div>
-            );
-          })}
-        </div>
-      </motion.div>
-
-      {/* Hobbies & Interests Tile */}
-      <motion.div
-        variants={scaleIn}
-        className="group sm:col-span-2 lg:col-span-3 rounded-2xl border border-emerald/30 bg-dark-900 bg-opacity-50 backdrop-blur-md p-6 md:p-8 hover:border-emerald hover:shadow-emerald-glow transition-all duration-500 hover:-translate-y-1"
-      >
-        <div className="text-4xl mb-4 text-emerald"><FaStar /></div>
-        <h3 className="text-xl font-bold text-foreground mb-3">When I&apos;m Not Coding</h3>
-        <p className="text-foreground/80 text-sm leading-relaxed mb-3">
-        Beyond software development, I value a well-rounded and active lifestyle. I maintain discipline through a structured upper and lower training routine, and I enjoy engaging with complex mechanics and strategy through PC gaming. To keep my perspective fresh and fuel my curiosity, I also spend my downtime traveling, reading, and tinkering with various setups to understand how systems work from the inside out.
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {["Reading", "Gaming", "Gym", "Travel"].map(
-            (hobby) => (
-              <span
-                key={hobby}
-                className="px-3 py-1 rounded-full bg-emerald/10 border border-emerald/30 text-emerald text-xs font-medium"
-              >
-                {hobby}
-              </span>
-            )
-          )}
-        </div>
-      </motion.div>
-    </motion.div>
+    <div className="mt-12 grid gap-5 lg:grid-cols-3">
+      {strengths.map(({ icon: Icon, title, body }) => (
+        <article key={title} className="card p-6">
+          <div className="icon-tile"><Icon className="size-5" /></div>
+          <h3 className="mt-5 text-lg font-semibold text-foreground">{title}</h3>
+          <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
+        </article>
+      ))}
+      <article className="card p-6 lg:col-span-2">
+        <p className="card-label">Core languages</p>
+        <div className="mt-4 flex flex-wrap gap-2">{languages.map((item) => <span key={item} className="badge">{item}</span>)}</div>
+      </article>
+      <article className="card p-6">
+        <p className="card-label">Frameworks &amp; tools</p>
+        <div className="mt-4 flex flex-wrap gap-2">{platforms.map((item) => <span key={item} className="badge">{item}</span>)}</div>
+      </article>
+    </div>
   );
-};
+}
 
 export default BentoGrid;
