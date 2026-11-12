@@ -1,14 +1,12 @@
-import { useEffect, useId, useRef, useState } from "react";
-import { animate, createScope, createTimer } from "animejs";
+import { useEffect, useRef, useState } from "react";
+import { animate, createAnimatable, createScope, createTimer } from "animejs";
 
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
 export default function TvImage({ src, alt, href, label, channel = 0, portrait = false }) {
   const root = useRef(null);
   const grain = useRef(null);
-  const pointer = useRef({ x: 50, y: 50 });
-  const signal = useRef({ x: 50, y: 50 });
-  const noiseId = `tv-noise-${useId().replace(/:/g, "")}`;
+  const pointer = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia(REDUCED_MOTION).matches);
@@ -27,17 +25,17 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
     let visible = typeof IntersectionObserver === "undefined";
     let sync;
     const scope = createScope({ root }).add(() => {
-      const screen = root.current.querySelector(".tv-screen");
-      // Reduced motion retains gentle grain, without a moving band or branch animation.
+      pointer.current = createAnimatable(root.current.querySelector(".tv-screen__signal"), {
+        x: reducedMotion ? 0 : 100,
+        y: reducedMotion ? 0 : 100,
+        ease: "out(3)",
+      });
+      // Move a cached tile on its own layer instead of repainting SVG noise each frame.
       const reception = createTimer({
         autoplay: false,
-        frameRate: reducedMotion ? 8 : 18,
+        frameRate: reducedMotion ? 8 : 12,
         onUpdate: () => {
-          grain.current?.setAttribute("seed", String(Math.floor(Math.random() * 1000)));
-          signal.current.x += (pointer.current.x - signal.current.x) * .45;
-          signal.current.y += (pointer.current.y - signal.current.y) * .45;
-          screen.style.setProperty("--signal-x", `${signal.current.x.toFixed(1)}%`);
-          screen.style.setProperty("--signal-y", `${signal.current.y.toFixed(1)}%`);
+          if (grain.current) grain.current.style.transform = `translate3d(${Math.floor(Math.random() * 25) - 12}px,${Math.floor(Math.random() * 25) - 12}px,0)`;
         },
       });
       const animations = [reception];
@@ -63,16 +61,16 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
       observer?.disconnect();
       document.removeEventListener("visibilitychange", sync);
       scope.revert();
+      pointer.current = null;
     };
   }, [active, portrait, reducedMotion]);
 
   const trackPointer = event => {
+    if (!pointer.current || document.hidden) return;
     const rect = root.current.querySelector(".tv-screen").getBoundingClientRect();
     if (!rect.width || !rect.height) return;
-    pointer.current = {
-      x: Math.max(0, Math.min(100, (event.clientX - rect.left) / rect.width * 100)),
-      y: Math.max(0, Math.min(100, (event.clientY - rect.top) / rect.height * 100)),
-    };
+    pointer.current.x(Math.max(0, Math.min(rect.width, event.clientX - rect.left)) - rect.width / 2);
+    pointer.current.y(Math.max(0, Math.min(rect.height, event.clientY - rect.top)) - rect.height / 2);
   };
 
   const Tag = href ? "a" : "div";
@@ -80,17 +78,11 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
     className={`${portrait ? "portrait-frame" : "project-tv friend__image"}${active ? " is-receiving" : ""}${hovered ? " is-hovered" : ""}`}
     {...(href ? { href, "aria-label": label, target: "_blank", rel: "noreferrer" } : {})}
     onPointerEnter={() => setHovered(true)} onPointerMove={trackPointer}
-    onPointerLeave={() => { setHovered(false); pointer.current = { x: 50, y: 50 }; }}
+    onPointerLeave={() => setHovered(false)}
     onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}>
     <div className="tv-screen">
       <img className={portrait ? "profile-art" : "tv-screen__image"} src={src} alt={alt}/>
-      <svg className="tv-screen__static" aria-hidden="true" focusable="false" width="100%" height="100%">
-        <defs><filter id={noiseId} x="0" y="0" width="100%" height="100%">
-          <feTurbulence ref={grain} type="fractalNoise" baseFrequency=".7" numOctaves="1" seed="7" stitchTiles="stitch"/>
-          <feColorMatrix type="saturate" values="0"/>
-        </filter></defs>
-        <rect width="100%" height="100%" filter={`url(#${noiseId})`}/>
-      </svg>
+      <span ref={grain} className="tv-screen__static" aria-hidden="true"/>
       <span className="tv-screen__scanlines" aria-hidden="true"/>
       <span className="tv-screen__roll" aria-hidden="true"/>
       <span className="tv-screen__signal" aria-hidden="true"/>
