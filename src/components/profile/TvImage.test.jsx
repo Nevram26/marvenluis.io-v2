@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { animate, createScope, createTimer } from "animejs";
+import { animate, createAnimatable, createScope, createTimer } from "animejs";
 import TvImage from "./TvImage";
 
 vi.mock("animejs", () => ({
   animate: vi.fn(() => ({ play: vi.fn(), pause: vi.fn() })),
+  createAnimatable: vi.fn(() => ({ x: vi.fn(), y: vi.fn() })),
   createTimer: vi.fn(() => ({ play: vi.fn(), pause: vi.fn() })),
   createScope: vi.fn(() => {
     const scope = {
@@ -77,8 +78,18 @@ test("static interference follows the mouse and project TVs have no branches", (
   screenElement.getBoundingClientRect = () => ({ left: 0, top: 0, width: 200, height: 200 });
   fireEvent.pointerEnter(link);
   fireEvent(link, new MouseEvent("pointermove", { bubbles: true, clientX: 160, clientY: 20 }));
-  createTimer.mock.calls.at(-1)[0].onUpdate();
-  expect(parseFloat(screenElement.style.getPropertyValue("--signal-x"))).toBeGreaterThan(50);
-  expect(parseFloat(screenElement.style.getPropertyValue("--signal-y"))).toBeLessThan(50);
+  const pointer = createAnimatable.mock.results.at(-1).value;
+  expect(pointer.x).toHaveBeenCalledWith(60);
+  expect(pointer.y).toHaveBeenCalledWith(-80);
+  fireEvent(link, new MouseEvent("pointermove", { bubbles: true, clientX: 40, clientY: 120 }));
+  expect(createAnimatable).toHaveBeenCalledTimes(1);
   expect(container.querySelector(".tv-branches")).not.toBeInTheDocument();
+});
+
+test("static animates a cached texture without rebuilding SVG noise or pointer gradients", () => {
+  const { container } = render(<TvImage src="/portrait.png" alt="Portrait" portrait/>);
+  expect(container.querySelector("feTurbulence")).not.toBeInTheDocument();
+  createTimer.mock.calls.at(-1)[0].onUpdate();
+  expect(container.querySelector(".tv-screen__static").style.transform).toMatch(/^translate3d\(/);
+  expect(container.querySelector(".tv-screen").style.getPropertyValue("--signal-x")).toBe("");
 });

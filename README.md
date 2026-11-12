@@ -27,3 +27,5 @@ npm run preview
 ```
 
 Vite serves development on port 5173 and writes production files to `dist/`. Vercel deploys the `master` branch; `vercel.json` preserves SPA routing.
+
+Sharing metadata lives in `index.html`; the Open Graph/Twitter preview image is `public/og-image.png`. TV grain uses a cached texture with transform-only movement to avoid rebuilding SVG filters while hovering.

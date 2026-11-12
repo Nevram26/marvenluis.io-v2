@@ -13,7 +13,7 @@ const points = lines => [...new Set(lines.join(" ").split(" "))].map(p => p.spli
 
 // Every star loops on its own, offset from its neighbours, so none sits still waiting for a shared stagger.
 const twinkle = (targets, props) => Array.from(utils.$(targets)).map(($s, i) =>
-  animate($s, { ...props, duration: CYCLE, delay: (i * 530) % CYCLE, loop: true, alternate: true, ease: "inOutSine", autoplay: false }));
+  animate($s, { ...props, duration: CYCLE, delay: (i * 530) % CYCLE, loop: true, alternate: true, ease: "inOutSine", autoplay: false, frameRate: 24 }));
 
 export default function SceneEffects() {
   const root = useRef(null);
@@ -26,10 +26,9 @@ export default function SceneEffects() {
       if (matches.reducedMotion) return;
       const animations = [
         ...twinkle(".scene-star", { opacity: [.25, .85], scale: [.8, 1.12] }),
-        ...twinkle(".constellation circle", { opacity: [.35, 1], r: [1.4, 2.2] }),
       // The lines draw in once on load; the figures then drift a few pixels, slowly.
         animate(svg.createDrawable(".constellation polyline"), { draw: ["0 0", "0 1"], duration: 2400, delay: stagger(300), ease: "inOutSine", autoplay: false }),
-        animate(".constellation", { translateY: [0, -6], duration: 14000, loop: true, alternate: true, ease: "inOutSine", autoplay: false }),
+        animate(".constellation", { translateY: [0, -6], opacity: [.6, .9], duration: 14000, loop: true, alternate: true, ease: "inOutSine", autoplay: false, frameRate: 24 }),
       ];
       animations.forEach(animation => animation.resume());
     });

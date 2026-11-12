@@ -30,7 +30,7 @@ body{background-color:#050805;background-image:radial-gradient(ellipse at 10% 18
 .portrait-frame .profile-art{width:100%;height:100%;border:0;filter:saturate(.8);object-position:top}
 .portrait-frame .tv-screen{position:absolute;inset:11px;height:auto;border-radius:4px}.portrait-frame .tv-branches{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;z-index:3;opacity:.9}
 .tv-screen__static,.tv-screen__scanlines,.tv-screen__roll{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.tv-screen__static{opacity:0;z-index:1;transition:opacity .18s ease-out}
+.tv-screen__static{inset:-16px;width:calc(100% + 32px);height:calc(100% + 32px);opacity:0;z-index:1;background:url("/images/tv-noise.svg") repeat;transition:opacity .18s ease-out}
 .tv-screen__scanlines{z-index:2;opacity:.2;background:repeating-linear-gradient(0deg,#0009 0 1px,transparent 1px 3px);box-shadow:inset 0 0 12px 3px #0008}
 .tv-screen__roll{z-index:2;inset:0 0 auto;height:25%;opacity:0;background:linear-gradient(transparent,#d7eac41c,transparent)}
 .is-receiving .tv-screen__static{opacity:.35}
@@ -51,9 +51,9 @@ body{background-color:#050805;background-image:radial-gradient(ellipse at 10% 18
 @media(prefers-reduced-motion:reduce){.tv-screen__roll{display:none}.portrait-frame.is-receiving .tv-screen__static{opacity:.18}.is-receiving .tv-screen__static{opacity:.3}.project-tv:hover,.project-tv:focus-visible,.project-tv:hover .tv-screen__image,.project-tv:focus-visible .tv-screen__image{transform:none}}
 
 .nav--logo-only .nav__bar{justify-content:center;min-height:72px}
-.tv-screen__static{mask-image:radial-gradient(ellipse at var(--signal-x,50%) var(--signal-y,50%),#000 5%,#0006 100%)}
-.tv-screen__signal{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;background:radial-gradient(ellipse 35% 28% at var(--signal-x,50%) var(--signal-y,50%),#d9edc238,transparent),linear-gradient(transparent calc(var(--signal-y,50%) - 2%),#d9edc233 var(--signal-y,50%),transparent calc(var(--signal-y,50%) + 2%))}
-.is-hovered .tv-screen__signal{opacity:.7}
+.is-receiving .tv-screen__static{will-change:transform}
+.tv-screen__signal{position:absolute;left:50%;top:50%;width:140px;height:56px;margin:-28px 0 0 -70px;z-index:2;pointer-events:none;opacity:0;background:radial-gradient(ellipse,#d9edc244,transparent 70%)}
+.is-hovered .tv-screen__signal{opacity:.7;will-change:transform}
 .is-hovered .tv-screen__static{opacity:.65}
 .portrait-frame.is-hovered .tv-screen__static{opacity:.42}
 .space-panel#coding{min-width:0}
@@ -95,3 +95,6 @@ body{background-color:#050805;background-image:radial-gradient(ellipse at 10% 18
   .playlist-embed{flex:1 0 352px;min-height:352px}
   .playlist-open{flex:none}
 }
+
+.scene-star{will-change:transform,opacity}
+.constellation{will-change:transform,opacity}
