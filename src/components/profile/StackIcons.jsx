@@ -1,0 +1,2 @@
+const ids={React:"react", "React Native":"react", NestJS:"nestjs", Django:"django", TypeScript:"typescript", Docker:"docker", Python:"python", Java:"java"};
+export default function StackIcons({stack}){const names=Array.isArray(stack)?stack:stack.split(", ");return <div className="ui-logos">{[...new Set(names.map(n=>ids[n]).filter(Boolean))].map(id=><span className="ic-tile" key={id}><img className="ic ic-32" data-icon={id} src={`/assets/icons/${id}.svg`} alt={id} width="32" height="32"/></span>)}</div>}

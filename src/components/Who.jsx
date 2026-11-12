@@ -1,0 +1,2 @@
+import {links} from "../content/site";
+export default function Who(){return <section className="section bg-band bg-bleed" id="who" data-moment="iris-opens" style={{"--h":1,"--hm":1}}><div className="wrap"><h2 className="section-head">Who I'd like to work with</h2><p className="quote">Teams shipping real software, where a 2026 graduate who has merged 232 PRs gets code review, not babysitting.</p><a className="link" href={links.resume} target="_blank" rel="noreferrer">Read my resume</a></div></section>}

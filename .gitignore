@@ -29,3 +29,10 @@ yarn-error.log*
 
 Server/node_modules
 Server/config.js
+graphify-out/
+.taste-skill/
+.impeccable/
+.playwright-mcp/
+shots/
+
+/tmp/
