@@ -1,0 +1,3 @@
+import StackIcons from "./profile/StackIcons";
+import {work} from "../content/site";
+export default function Work(){return <section className="section" id="work" style={{"--h":2}}><div className="wrap"><h2 className="section-head">Work</h2><ul className="rows work-rows">{work.map(job=><li key={job.id}><div><h3>{job.company}</h3><p className="muted">{job.dates}</p></div><div><h3>{job.role}</h3><p>{job.context}</p><ul>{job.points.map(p=><li key={p}>{p}</li>)}</ul><StackIcons stack={job.stack}/>{job.website&&<a className="link" href={job.website} target="_blank" rel="noreferrer">Visit the Esca teaser site</a>}</div></li>)}</ul></div></section>}

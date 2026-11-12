@@ -1,0 +1,3 @@
+import StackIcons from "./profile/StackIcons";
+import {projects} from "../content/site";
+export default function Top8(){return <section className="section" id="top8" style={{"--h":2}}><div className="wrap"><h2 className="section-head">Top 8</h2><div className="grid">{projects.map(p=><article className="card card--open span-3" key={p.title}><h3>{p.title}</h3><p>{p.summary || p.body}</p><StackIcons stack={p.stack}/>{p.link&&<a className="link" href={p.link} target="_blank" rel="noreferrer">View on GitHub<span className="sr-only">: {p.title}</span></a>}</article>)}</div></div></section>}

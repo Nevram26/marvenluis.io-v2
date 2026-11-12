@@ -1,0 +1,3 @@
+import {startNowPlaying} from "./nowPlaying";
+test("returns pause and resume controls",()=>{const el=document.createElement("div");el.innerHTML='<div class="playing-bars"><i></i></div>';const ctrl=startNowPlaying(el);expect(typeof ctrl.pause).toBe("function");expect(typeof ctrl.resume).toBe("function");ctrl.pause();});
+test("reduced motion leaves bars still",()=>{const old=window.matchMedia;window.matchMedia=()=>({matches:true});const el=document.createElement("div");const ctrl=startNowPlaying(el);ctrl.resume();ctrl.pause();expect(el.style.transform).toBe("");window.matchMedia=old;});

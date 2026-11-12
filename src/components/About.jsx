@@ -1,0 +1,3 @@
+import {about,links} from "../content/site";
+import ProfileCard from "./profile/ProfileCard";
+export default function About(){return <section className="section" id="about" style={{"--h":1}}><div className="wrap"><h2 className="section-head">About me</h2><div className="grid"><div className="span-5 split-col">{about.paragraphs.map(p=><p key={p}>{p}</p>)}<p>I'm a 2026 graduate with eleven months of paid work.</p><a className="link" href={links.resume} target="_blank" rel="noreferrer">Read my resume</a></div><div className="span-6 start-7 frame frame--split profile-frame" data-visual data-fx="gradient-mesh" data-fx-seed="26" data-fx-palette='{"bg":"#151517","accent":"#e3382b"}'><ProfileCard/></div></div></div></section>}
