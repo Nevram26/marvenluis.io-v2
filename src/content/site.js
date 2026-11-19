@@ -1,4 +1,5 @@
-// Every fact on the site comes from public/Marven-Luis-resume.pdf. Update both together.
+// Sources: public/Marven-Luis-resume.pdf for work, education and skills; each project's repository
+// (commits and PRs authored by Marven) for project roles, dates and contributions. Update them together.
 
 export const links = {
   email: "mailto:luis.marvenjoffre@gmail.com",
@@ -9,35 +10,34 @@ export const links = {
   resume: "/Marven-Luis-resume.pdf",
 };
 
-export const nav = [
-  { label: "Work", href: "/#work" },
-  { label: "Projects", href: "/#projects" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
-];
-
-export const hero = {
-  title: "Full-stack developer building web and mobile products.",
-  lead: "I'm Marven Luis, a 2026 Computer Science graduate in Quezon City, Philippines. Since November 2025 I've shipped production features on three development teams, working in TypeScript, React, NestJS, Django and PostgreSQL.",
-  facts: [
-    { label: "Currently", value: "Software Engineer at MetaWatt, since June 2026" },
-    { label: "Education", value: "BS Computer Science, Saint Louis University, 2026" },
-    { label: "Recognition", value: "3rd place, 2025 Meralco IDOL Hackathon" },
+export const profile = {
+  headline: "Full-stack developer: React, NestJS, Django",
+  status: "Software Engineer at MetaWatt",
+  bands: [],
+  details: [
+    ["Here for", "Full-stack roles, contract work"],
+    ["Experience", "3 dev teams since November 2025, 232 merged PRs"],
+    ["Education", "BS Computer Science, Saint Louis University, 2026"],
+    ["Honors", "Dean's Lister, 7 of 8 semesters"],
+    ["Recognition", "3rd place, 2025 Meralco IDOL Hackathon"],
   ],
 };
 
+// The first three points of each job stay visible; the rest sit behind "More contributions".
 export const work = [
   {
     id: "metawatt",
     role: "Software Engineer",
     company: "MetaWatt",
     dates: "June 2026 to present",
-    context: "AI-native startup. EduVerse e-learning platform, React frontend and a Node.js/NestJS REST API.",
+    context: "AI-native startup. EduVerse e-learning platform: React frontend and NestJS REST API on Prisma and PostgreSQL/Supabase.",
     points: [
       "Built authentication, multi-school tenant isolation, real-time notifications, certificate issuance and file uploads across the React frontend and the NestJS API (70 merged PRs).",
       "Secured the API with global auth guards, tenant-scoped data access and strict JWT verification, with an HTTP regression test for each rejection case.",
-      "Prevented conflicting updates when users act at the same time (invite redemption, certificate revocation, survey submission) with atomic SQL writes, and added a CI check that runs new migrations against existing data.",
-      "Coached OJT interns on coding standards and AI-assisted workflows and reviewed their PRs.",
+      "Prevented conflicting updates when users act at the same time (invite redemption, certificate revocation, survey submission) using atomic SQL writes.",
+      "Added a CI check that runs new database migrations against existing data before they merge.",
+      "Reviewed intern pull requests, catching issues such as a form update that would have cascade-deleted existing fields.",
+      "Trained newly onboarded interns on MetaWatt's AI-assisted development workflows and how to use AI coding tools effectively.",
     ],
     stack: ["TypeScript", "React", "NestJS", "Prisma", "PostgreSQL", "Supabase"],
   },
@@ -46,13 +46,13 @@ export const work = [
     role: "Full Stack Developer",
     company: "Esca",
     dates: "March to August 2026, part-time contract",
-    context: "Team of 8. React Native/Expo mobile app and a Vite/React web app on a shared Supabase backend, for a government-funded agtech platform.",
+    context: "Team of 8. Government-funded agtech platform for farmers, coop admins and packing houses: React Native/Expo mobile app and Vite/React web app on a shared Supabase backend.",
     points: [
       "Eliminated three session race conditions by consolidating auth state into a layout-level guard and reusable React hooks.",
-      "Built typed Supabase data-access services for buyers, vehicles and logistics providers, with validation and Jest/Vitest tests.",
       "Built QR scanning, telemetry views and role-based dashboards for farmers, coop admins and packing houses (83 merged PRs).",
+      "Built typed Supabase data-access services for buyers, vehicles and logistics providers, with validation and Jest/Vitest tests.",
     ],
-    stack: ["React Native", "Expo", "React", "TypeScript", "Supabase"],
+    stack: ["React Native", "Expo", "React", "TypeScript", "Supabase", "Jest", "Vitest"],
     website: "https://www.esca-agri.com/",
   },
   {
@@ -60,82 +60,94 @@ export const work = [
     role: "Full Stack Developer",
     company: "Panpacific University",
     dates: "November 2025 to June 2026, part-time contract",
-    context: "Team of 8. Django and Wagtail CMS, PostgreSQL, AWS S3, Docker.",
+    context: "Team of 8. University website CMS on Django and Wagtail, PostgreSQL, AWS S3 and Docker.",
     points: [
-      "Built 15+ custom Wagtail page models and StreamField blocks plus 20+ responsive Tailwind sections, so non-technical staff can create and publish Academics, Admissions and Sustainability pages without a developer (79 merged PRs).",
+      "Built 15+ custom Wagtail page models and StreamField blocks, so non-technical staff can create and publish Academics, Admissions and Sustainability pages without a developer.",
+      "Built 20+ responsive Tailwind sections used across those pages (79 merged PRs).",
     ],
     stack: ["Django", "Wagtail", "PostgreSQL", "Tailwind CSS", "AWS S3", "Docker"],
   },
 ];
 
+export const skills = [
+  { group: "Frontend", items: "TypeScript, JavaScript, React, React Native (Expo), Tailwind CSS, HTML/CSS" },
+  { group: "Backend and APIs", items: "Node.js, NestJS, Django, Wagtail CMS, FastAPI, REST APIs, Socket.IO" },
+  { group: "Data", items: "PostgreSQL, Supabase, Prisma, Redis, MongoDB, SQL" },
+  { group: "Testing and delivery", items: "Jest, Vitest, HTTP regression tests, GitHub Actions, Docker, AWS S3, Git" },
+  { group: "Machine learning", items: "Python, PyTorch (Bi-LSTM), ONNX Runtime Web, SHAP" },
+  { group: "AI-assisted development", items: "Claude Code, Codex, agentic coding workflows" },
+  { group: "Ways of working", items: "Code review, Agile/Scrum, Jira, Postman" },
+];
+export const aiNote = "I use AI coding tools the way I'd treat any contributor's code: I review it, test it and own what gets merged.";
+
+// Featured team projects, in display order. Images live in public/images.
 export const projects = [
   {
     title: "VoltGuard",
     meta: "3rd place, Meralco IDOL Hackathon, November 2025",
-    body: "An AI energy-waste monitor. I designed and built the mobile-first React frontend (dashboard, analytics, chatbot views) and the streak gamification system end to end: FastAPI endpoints, PostgreSQL schema, React UI and real-time Socket.IO alerts for high-usage and idle-device detections.",
-    stack: "React 19, FastAPI, PostgreSQL, Redis, Socket.IO",
+    summary: "Hackathon energy-waste monitor with live alerts.",
+    body: "A two-day hackathon app that spots idle devices on camera and flags energy waste. I built the React client (dashboard, analytics, camera and streak views) and moved it from Next.js to Vite. I also wired live alerts: a Redis pub/sub listener in FastAPI that pushes each new alert to the browser over Socket.IO.",
+    stack: "React, FastAPI, Redis, Socket.IO, PostgreSQL",
     link: "https://github.com/msmeralco/VoltGuard",
+    image: "volt-guard.webp",
   },
   {
     title: "TB treatment outcome prediction",
     meta: "Computer Science thesis, May 2026",
-    body: "A temporal model trained on DOH-CAR TB-DOTS records from 2015 to 2025. I built the hybrid Bi-LSTM model, the team's best on balanced accuracy and the only one that missed no treatment failures.",
-    stack: "Python, Bi-LSTM, SHAP",
+    summary: "A Bi-LSTM that flags TB treatment failure early.",
+    body: "Clinical decision support for the DOH Cordillera TB-DOTS program, built on 2015 to 2025 treatment records. I built the temporal models, including the hybrid Bi-LSTM: the team's best on balanced accuracy and the only one that missed no treatment failures. I exported it to ONNX so it runs in the browser at each monthly check-in, and traced and fixed a training bug that had collapsed every risk score to near zero.",
+    stack: "Python, PyTorch, ONNX Runtime Web, FastAPI, React",
     link: "https://github.com/VladTemp27/TB-DOTS-CAR-CDSS",
+    image: "bi-lstm.webp",
   },
   {
     title: "Cache Game",
-    meta: "Backend developer and database designer, January to March 2025",
-    body: "A six-service microservices architecture: Java/JavaFX client, two Go services for real-time WebSocket gameplay and matchmaking, a Node.js REST API, MongoDB and Nginx. I co-developed the REST API and designed the MongoDB data-access layer for auth, game history and score updates.",
-    stack: "Java, Go, Node.js, MongoDB, Docker Compose",
+    meta: "Backend developer, March to April 2025",
+    summary: "Multiplayer card game on Go and Node.js services.",
+    body: "A multiplayer card game with a JavaFX client, Go services for matchmaking and real-time play, a Node.js REST API and MongoDB, run with Docker Compose. I built the API's data-access layer (models, services and routes for users, cards and game history), seeding, auth middleware on the routes and the end-of-game score update.",
+    stack: "Node.js, MongoDB, Go, Java, Docker Compose",
     link: "https://github.com/VladTemp27/cache-game",
+    image: "cache-game.webp",
   },
   {
     title: "Exit-interview platform",
-    meta: "UI/UX designer and full stack developer, August to September 2024",
-    body: "A dual-backend exit-interview platform (Node.js and PHP/Apache behind an Nginx reverse proxy, MariaDB, Docker Compose), shortlisted for university-wide adoption. I led a refactor that consolidated about 9,800 lines of legacy code across 88 files.",
+    meta: "Full stack developer, November to December 2024",
+    summary: "Alumni exit surveys on a Node.js and PHP backend.",
+    body: "An exit-interview survey platform for Saint Louis University alumni, with a Node.js admin side and a PHP alumni side behind Nginx, on MariaDB and Docker Compose. I built the admin survey builder, the publish flow that limits a survey to selected programs and editing after publish, plus the Node routes and data access behind them.",
     stack: "Node.js, PHP, MariaDB, Nginx, Docker",
     link: "https://github.com/loudiman/Exit-Interview-Question",
+    image: "exit-interview.webp",
+  },
+];
+
+// Solo work in progress. State only what the repository shows as done.
+export const building = [
+  {
+    title: "TrackSort",
+    status: "Solo project, since October 2026",
+    body: "A Spotify playlist organizer that splits a playlist into new ones by artist or by genres you assign, without touching the original. Working today: Spotify sign-in with encrypted tokens and CSRF-protected sessions, playlist capture, an artist review, genre mappings and a copy plan you approve before anything changes. Next: running that plan against Spotify in safe, resumable batches.",
+    stack: "NestJS (hexagonal architecture), React, PostgreSQL, GitHub Actions",
+    note: "Private repository",
   },
   {
-    title: "Lexi Logic",
-    meta: "Multiplayer word game",
-    body: "Players type words that appear on screen and the highest score wins. Duplicate entries don't count, rewarding vocabulary and fast thinking.",
-    stack: "React, WebSocket",
-    link: "https://github.com/Nevram26/lexi-logic",
-  },
-  {
-    title: "Stock Pilot",
-    meta: "Inventory management system",
-    body: "A Java desktop app for three user roles, Purchases, Sales and Admin, each with its own tools for tracking stock and updating inventory.",
-    stack: "Java",
-    link: "https://github.com/Nevram26/InventoryManagement",
+    title: "Grave Bets",
+    status: "Solo game project, since June 2026",
+    body: "A browser action roguelite set in a cursed casino, where you choose wagers that make fights harder for bigger payouts. Done so far: a stabilized Canvas prototype with versioned saves, a fixed-step simulation and seeded randomness for reproducible runs, covered by automated tests. Next: moving rendering to PixiJS, then building the wager system.",
+    stack: "JavaScript (ES modules), Canvas, no dependencies",
+    link: "https://github.com/Nevram26/Grave-Bets",
   },
 ];
 
 export const about = {
   paragraphs: [
-    "I'm a full-stack developer with paid experience since November 2025 across an AI-native e-learning startup, a government-funded agtech platform and a university CMS. I graduated from Saint Louis University in Baguio in 2026 with a BS in Computer Science, a Dean's Lister for seven of eight semesters.",
-    "I build with Claude Code and Codex and coach interns on reviewing AI-written code, which mostly means catching the form update that would cascade-delete existing fields before it ships.",
-    "Outside work: the gym, PC games, reading and travel.",
+    "I'm a full-stack developer with paid experience on three development teams since November 2025: MetaWatt, an AI-native e-learning startup; Esca, a government-funded agtech platform; and Panpacific University's Wagtail CMS. I work across React and React Native frontends, NestJS and Django backends, and PostgreSQL/Supabase.",
+    "Most of my recent work is the part users only notice when it breaks: authentication, keeping each school's data separate, safe writes when two people act at once, and migrations that survive real data.",
   ],
-  skills: [
-    { group: "Languages", items: "TypeScript, JavaScript, Python, SQL, HTML/CSS" },
-    { group: "Frameworks and libraries", items: "React, React Native, Node.js, NestJS, Prisma, Django, FastAPI, Wagtail CMS, Tailwind CSS" },
-    { group: "Databases", items: "PostgreSQL, Supabase, Redis" },
-    { group: "AI-assisted development", items: "Claude Code, Codex, agentic coding workflows" },
-    { group: "Machine learning", items: "Bi-LSTM time-series modeling, SHAP explainability" },
-    { group: "Tools and practices", items: "Git, GitHub Actions, Docker, AWS S3, Jest, Vitest, Postman, Jira, REST APIs, CI/CD, Agile/Scrum" },
-  ],
+  lookingFor: "Teams shipping useful software, with code review, shared ownership and room to grow.",
 };
 
-export const profile = {status: "Shipping at MetaWatt", bands: [], details: [
- ["Status", "Software Engineer at MetaWatt"], ["Here for", "Full-stack roles, contract work"], ["Hometown", "Quezon City, Philippines"], ["Education", "BS Computer Science, Saint Louis University, 2026"], ["Recognition", "3rd place, 2025 Meralco IDOL Hackathon"], ["Training", "Upper/lower split"]]};
-export const facts = {mergedPRs: 232};
-projects.push({title: "SEA Water", body: "An infographic site about water scarcity in the Philippines and SDG 6.", stack: "React", link: "https://github.com/Nevram26/SEA_water"}, {title: "AmalzenDX", body: "A rule-based symptom checker that matches symptoms against medical rules.", stack: "React", link: "https://github.com/Benny-Gil/Amalzen-Disease-Diagnosis"});
-
-const summaries = ["An AI energy-waste monitor with real-time alerts and streaks.", "A temporal model predicting TB treatment outcomes.", "Real-time multiplayer gameplay across six microservices.", "A dual-backend platform for university exit interviews.", "A multiplayer word game rewarding vocabulary and fast thinking.", "A Java inventory app for Purchases, Sales and Admin.", "Water scarcity in the Philippines, explained through SDG 6.", "A symptom checker powered by rule-based medical logic."];
-projects.forEach((p,i)=>p.summary=summaries[i]);
-
-work[0].context = "EduVerse e-learning platform. React frontend and NestJS REST API.";
-work[1].context = "Government-funded agtech platform. React Native mobile and React web, shared Supabase backend.";
+export const interests = [
+  ["Fitness", "I work out. Upper/lower split, four days a week."],
+  ["Music", "Emo, post-hardcore, screamo, metalcore, OPM, rap, R&B"],
+  ["Games", "Monster Hunter, Warframe, Bloons, League of Legends, CS2 and AQW"],
+];

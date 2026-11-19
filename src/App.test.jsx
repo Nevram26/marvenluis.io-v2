@@ -1,5 +1,4 @@
 vi.mock("./lib/kit", () => ({ mountKit: () => Promise.resolve() }));
-vi.mock("./components/profile/CodingActivity", () => ({ default: () => <div>GitHub activity calendar</div> }));
 import {profile} from "./content/site";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
@@ -23,14 +22,14 @@ test("Esca links to its teaser and the old case study returns to work", () => {
   Element.prototype.scrollIntoView = vi.fn();
   renderAt("/work/esca");
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Marven Luis/);
-  expect(screen.getByRole("link", { name: /visit the Esca teaser site/i })).toHaveAttribute("href", "https://www.esca-agri.com/");
+  expect(screen.getByRole("link", { name: /visit the Esca website/i })).toHaveAttribute("href", "https://www.esca-agri.com/");
   expect(screen.queryByText(/read the case study/i)).not.toBeInTheDocument();
   expect(screen.getByText(/projects I contributed to as part of a team/i)).toBeInTheDocument();
 });
 
  test("profile shows the first four projects and omits music until supplied", () => {
  renderAt("/");
- expect([...document.querySelectorAll("#top4 h3")].map(el=>el.textContent)).toEqual(["VoltGuard","TB treatment outcome prediction","Cache Game","Exit-interview platform"]);
+ expect([...document.querySelectorAll("#top4 .friend h3")].map(el=>el.textContent)).toEqual(["VoltGuard","TB treatment outcome prediction","Cache Game","Exit-interview platform"]);
  expect(document.querySelectorAll("#top4 .tv-screen__image")).toHaveLength(4);
  expect(screen.getByText(/I work out/)).toBeInTheDocument();
  expect(screen.queryByText("Now playing")).not.toBeInTheDocument();
@@ -47,7 +46,7 @@ test("header contains only the centered logo and effects have no pause button", 
   expect(document.querySelector("header nav")).not.toBeInTheDocument();
   expect(document.querySelector("header .nav__actions")).not.toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Marven Luis home" })).toBeInTheDocument();
-  expect(screen.getByRole("heading", { name: "How consistently I code" })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Currently building" })).toBeInTheDocument();
 });
 
 test("reduced motion leaves constellations and stars still", () => {
@@ -58,4 +57,29 @@ test("reduced motion leaves constellations and stars still", () => {
     expect(document.querySelector(".constellation polyline").getAttribute("stroke-dasharray")).toBeNull();
     expect(document.querySelector(".scene-star").style.transform).toBe("");
   } finally { window.matchMedia = previous; }
+});
+
+test("recruiters see each job's top contributions without expanding anything", () => {
+  renderAt("/");
+  const jobs = [...document.querySelectorAll("#work .space-job")];
+  expect(jobs).toHaveLength(3);
+  for (const job of jobs) expect(job.querySelectorAll(":scope > ul > li").length).toBeGreaterThan(0);
+  expect(jobs[0].querySelector(":scope > ul")).toHaveTextContent(/tenant isolation/);
+  expect(document.querySelector("#work")).toHaveTextContent(/Trained newly onboarded interns on MetaWatt's AI-assisted development workflows/);
+});
+
+test("skills, current builds and interests carry real content only", () => {
+  renderAt("/");
+  expect(document.querySelector("#skills")).toHaveTextContent(/NestJS/);
+  expect([...document.querySelectorAll("#building h3")].map(el => el.textContent)).toEqual(["TrackSort", "Grave Bets"]);
+  const interests = document.querySelector("#interests").textContent;
+  expect(interests).not.toMatch(/Reading|Travel/);
+  expect(interests).toMatch(/Music/);
+});
+
+test("page copy has no coaching wording and no em dashes", () => {
+  renderAt("/");
+  const text = document.body.textContent;
+  expect(text).not.toMatch(/coach/i);
+  expect(text).not.toContain("—");
 });
