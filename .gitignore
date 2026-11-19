@@ -36,3 +36,6 @@ graphify-out/
 shots/
 
 /tmp/
+
+# ssr build output (never deployed)
+/dist-ssr
