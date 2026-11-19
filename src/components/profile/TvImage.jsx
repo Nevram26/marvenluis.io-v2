@@ -7,6 +7,7 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
   const root = useRef(null);
   const grain = useRef(null);
   const pointer = useRef(null);
+  const measured = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia(REDUCED_MOTION).matches);
@@ -66,18 +67,26 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
   }, [active, portrait, reducedMotion]);
 
   const trackPointer = event => {
-    if (!pointer.current || document.hidden) return;
-    const rect = root.current.querySelector(".tv-screen").getBoundingClientRect();
+    if (!pointer.current || !measured.current || document.hidden) return;
+    const { rect, sx, sy } = measured.current;
     if (!rect.width || !rect.height) return;
-    pointer.current.x(Math.max(0, Math.min(rect.width, event.clientX - rect.left)) - rect.width / 2);
-    pointer.current.y(Math.max(0, Math.min(rect.height, event.clientY - rect.top)) - rect.height / 2);
+    // Offset the cached rect by how far the page has scrolled since hover began.
+    const left = rect.left - (window.scrollX - sx);
+    const top = rect.top - (window.scrollY - sy);
+    pointer.current.x(Math.max(0, Math.min(rect.width, event.clientX - left)) - rect.width / 2);
+    pointer.current.y(Math.max(0, Math.min(rect.height, event.clientY - top)) - rect.height / 2);
+  };
+
+  const onPointerEnter = () => {
+    measured.current = { rect: root.current.querySelector(".tv-screen").getBoundingClientRect(), sx: window.scrollX, sy: window.scrollY };
+    setHovered(true);
   };
 
   const Tag = href ? "a" : "div";
   return <Tag ref={root}
     className={`${portrait ? "portrait-frame" : "project-tv friend__image"}${active ? " is-receiving" : ""}${hovered ? " is-hovered" : ""}`}
     {...(href ? { href, "aria-label": label, target: "_blank", rel: "noreferrer" } : {})}
-    onPointerEnter={() => setHovered(true)} onPointerMove={trackPointer}
+    onPointerEnter={onPointerEnter} onPointerMove={trackPointer}
     onPointerLeave={() => setHovered(false)}
     onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}>
     <div className="tv-screen">

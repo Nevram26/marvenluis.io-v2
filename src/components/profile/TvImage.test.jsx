@@ -86,6 +86,15 @@ test("static interference follows the mouse and project TVs have no branches", (
   expect(container.querySelector(".tv-branches")).not.toBeInTheDocument();
 });
 
+test("pointer tracking measures the screen once per hover", () => {
+  const rect = vi.spyOn(Element.prototype, "getBoundingClientRect").mockReturnValue({ left: 0, top: 0, width: 100, height: 100 });
+  render(<TvImage src="/project.png" alt="Project" href="https://example.com" label="Project" channel={1}/>);
+  const link = screen.getByRole("link", { name: "Project" });
+  fireEvent.pointerEnter(link);
+  for (let i = 0; i < 3; i++) fireEvent.pointerMove(link, { clientX: 10, clientY: 10 });
+  expect(rect).toHaveBeenCalledTimes(1);
+});
+
 test("static animates a cached texture without rebuilding SVG noise or pointer gradients", () => {
   const { container } = render(<TvImage src="/portrait.png" alt="Portrait" portrait/>);
   expect(container.querySelector("feTurbulence")).not.toBeInTheDocument();
