@@ -46,7 +46,7 @@ test("header contains only the centered logo and effects have no pause button", 
   expect(document.querySelector("header nav")).not.toBeInTheDocument();
   expect(document.querySelector("header .nav__actions")).not.toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Marven Luis home" })).toBeInTheDocument();
-  expect(screen.getByRole("heading", { name: "Currently building" })).toBeInTheDocument();
+  expect(screen.queryByRole("heading", { name: "Currently building" })).not.toBeInTheDocument();
 });
 
 test("reduced motion leaves constellations and stars still", () => {
@@ -68,10 +68,9 @@ test("recruiters see each job's top contributions without expanding anything", (
   expect(document.querySelector("#work")).toHaveTextContent(/Trained newly onboarded interns on MetaWatt's AI-assisted development workflows/);
 });
 
-test("skills, current builds and interests carry real content only", () => {
+test("skills and interests carry real content only", () => {
   renderAt("/");
   expect(document.querySelector("#skills")).toHaveTextContent(/NestJS/);
-  expect([...document.querySelectorAll("#building h3")].map(el => el.textContent)).toEqual(["TrackSort", "Grave Bets"]);
   const interests = document.querySelector("#interests").textContent;
   expect(interests).not.toMatch(/Reading|Travel/);
   expect(interests).toMatch(/Music/);

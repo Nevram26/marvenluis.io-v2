@@ -84,59 +84,30 @@ export const aiNote = "I use AI coding tools the way I'd treat any contributor's
 export const projects = [
   {
     title: "VoltGuard",
-    meta: "3rd place, Meralco IDOL Hackathon, November 2025",
     summary: "Hackathon energy-waste monitor with live alerts.",
-    body: "A two-day hackathon app that spots idle devices on camera and flags energy waste. I built the React client (dashboard, analytics, camera and streak views) and moved it from Next.js to Vite. I also wired live alerts: a Redis pub/sub listener in FastAPI that pushes each new alert to the browser over Socket.IO.",
-    stack: "React, FastAPI, Redis, Socket.IO, PostgreSQL",
     link: "https://github.com/msmeralco/VoltGuard",
     image: "volt-guard.webp",
   },
   {
     title: "TB treatment outcome prediction",
-    meta: "Computer Science thesis, May 2026",
     summary: "A Bi-LSTM that flags TB treatment failure early.",
-    body: "Clinical decision support for the DOH Cordillera TB-DOTS program, built on 2015 to 2025 treatment records. I built the temporal models, including the hybrid Bi-LSTM: the team's best on balanced accuracy and the only one that missed no treatment failures. I exported it to ONNX so it runs in the browser at each monthly check-in, and traced and fixed a training bug that had collapsed every risk score to near zero.",
-    stack: "Python, PyTorch, ONNX Runtime Web, FastAPI, React",
     link: "https://github.com/VladTemp27/TB-DOTS-CAR-CDSS",
     image: "bi-lstm.webp",
   },
   {
     title: "Cache Game",
-    meta: "Backend developer, March to April 2025",
     summary: "Multiplayer card game on Go and Node.js services.",
-    body: "A multiplayer card game with a JavaFX client, Go services for matchmaking and real-time play, a Node.js REST API and MongoDB, run with Docker Compose. I built the API's data-access layer (models, services and routes for users, cards and game history), seeding, auth middleware on the routes and the end-of-game score update.",
-    stack: "Node.js, MongoDB, Go, Java, Docker Compose",
     link: "https://github.com/VladTemp27/cache-game",
     image: "cache-game.webp",
   },
   {
     title: "Exit-interview platform",
-    meta: "Full stack developer, November to December 2024",
     summary: "Alumni exit surveys on a Node.js and PHP backend.",
-    body: "An exit-interview survey platform for Saint Louis University alumni, with a Node.js admin side and a PHP alumni side behind Nginx, on MariaDB and Docker Compose. I built the admin survey builder, the publish flow that limits a survey to selected programs and editing after publish, plus the Node routes and data access behind them.",
-    stack: "Node.js, PHP, MariaDB, Nginx, Docker",
     link: "https://github.com/loudiman/Exit-Interview-Question",
     image: "exit-interview.webp",
   },
 ];
 
-// Solo work in progress. State only what the repository shows as done.
-export const building = [
-  {
-    title: "TrackSort",
-    status: "Solo project, since October 2026",
-    body: "A Spotify playlist organizer that splits a playlist into new ones by artist or by genres you assign, without touching the original. Working today: Spotify sign-in with encrypted tokens and CSRF-protected sessions, playlist capture, an artist review, genre mappings and a copy plan you approve before anything changes. Next: running that plan against Spotify in safe, resumable batches.",
-    stack: "NestJS (hexagonal architecture), React, PostgreSQL, GitHub Actions",
-    note: "Private repository",
-  },
-  {
-    title: "Grave Bets",
-    status: "Solo game project, since June 2026",
-    body: "A browser action roguelite set in a cursed casino, where you choose wagers that make fights harder for bigger payouts. Done so far: a stabilized Canvas prototype with versioned saves, a fixed-step simulation and seeded randomness for reproducible runs, covered by automated tests. Next: moving rendering to PixiJS, then building the wager system.",
-    stack: "JavaScript (ES modules), Canvas, no dependencies",
-    link: "https://github.com/Nevram26/Grave-Bets",
-  },
-];
 
 export const about = {
   paragraphs: [
