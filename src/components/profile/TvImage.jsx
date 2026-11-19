@@ -87,7 +87,7 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
       <span className="tv-screen__roll" aria-hidden="true"/>
       <span className="tv-screen__signal" aria-hidden="true"/>
     </div>
-    {portrait && <img className="tv-branches" src="/images/withered-frame.png" alt="" aria-hidden="true"/>}
+    {portrait && <img className="tv-branches" src="/images/withered-frame.webp" alt="" aria-hidden="true"/>}
     {!portrait &&
       <div className="project-tv__panel" aria-hidden="true"><span className="project-tv__speaker"/><span className="project-tv__channel">CH {String(channel).padStart(2, "0")}</span><span className="project-tv__light"/><span className="project-tv__dial"/></div>}
   </Tag>;
