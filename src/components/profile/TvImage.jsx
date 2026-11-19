@@ -10,7 +10,7 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
   const measured = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia(REDUCED_MOTION).matches);
+  const [reducedMotion, setReducedMotion] = useState(() => typeof window !== "undefined" && window.matchMedia(REDUCED_MOTION).matches);
   const active = portrait || hovered || focused;
 
   useEffect(() => {
