@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import CodingActivity from "./CodingActivity";
 
 afterEach(() => vi.unstubAllGlobals());
@@ -18,4 +18,20 @@ test("failed requests show an honest fallback and keep the GitHub link", async (
   render(<CodingActivity/>);
   expect(await screen.findByText(/couldn't load the contribution calendar/i)).toBeInTheDocument();
   expect(screen.getByRole("link", { name: /view activity on GitHub/i })).toBeInTheDocument();
+});
+
+test("waits for the calendar to near the viewport before fetching", () => {
+  let intersect;
+  vi.stubGlobal("IntersectionObserver", class {
+    constructor(callback) { intersect = callback; }
+    observe() {}
+    disconnect() {}
+  });
+  const fetchSpy = vi.fn().mockReturnValue(new Promise(() => {}));
+  vi.stubGlobal("fetch", fetchSpy);
+  render(<CodingActivity/>);
+  expect(fetchSpy).not.toHaveBeenCalled();
+  act(() => intersect([{ isIntersecting: true }]));
+  expect(fetchSpy).toHaveBeenCalledTimes(1);
+  expect(fetchSpy.mock.calls[0][0]).toMatch(/github-contributions-api/);
 });
