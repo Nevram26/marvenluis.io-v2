@@ -40,7 +40,7 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
       });
       const animations = [reception];
       if (!reducedMotion) animations.push(animate(root.current.querySelector(".tv-screen__roll"), {
-        translateY: ["-100%", "500%"], duration: 3200, loop: true, ease: "linear", autoplay: false,
+        translateY: ["-100%", "500%"], duration: 3200, loop: true, ease: "linear", autoplay: false, frameRate: 24,
       }));
       if (portrait && !reducedMotion) animations.push(animate(root.current.querySelector(".tv-branches"), {
         opacity: [.82, 1], duration: 6400, alternate: true,
