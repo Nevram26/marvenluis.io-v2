@@ -98,3 +98,7 @@ body{background-color:#050805;background-image:radial-gradient(ellipse at 10% 18
 
 .scene-star{will-change:transform,opacity}
 .constellation{will-change:transform,opacity}
+
+/* 404 link underline, copied from the removed motion.css: hairline under the whole link, ink line on hover */
+.link{text-decoration:none;padding-bottom:2px;background:linear-gradient(currentColor,currentColor) 0 100%/0% 1px no-repeat,linear-gradient(var(--line-strong),var(--line-strong)) 0 100%/100% 1px no-repeat}
+.link:is(:hover,:focus-visible){background-size:100% 1px,100% 1px}
