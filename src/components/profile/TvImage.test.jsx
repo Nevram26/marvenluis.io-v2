@@ -93,3 +93,23 @@ test("static animates a cached texture without rebuilding SVG noise or pointer g
   expect(container.querySelector(".tv-screen__static").style.transform).toMatch(/^translate3d\(/);
   expect(container.querySelector(".tv-screen").style.getPropertyValue("--signal-x")).toBe("");
 });
+
+test("portrait image loads eagerly with high priority", () => {
+  const error = vi.spyOn(console, "error").mockImplementation(() => {});
+  render(<TvImage src="/portrait.png" alt="Portrait" portrait/>);
+  const img = screen.getByRole("img", { name: "Portrait" });
+  expect(img).toHaveAttribute("fetchpriority", "high");
+  expect(img).not.toHaveAttribute("loading");
+  expect(img).toHaveAttribute("decoding", "async");
+  expect(error).not.toHaveBeenCalled();
+});
+
+test("project images lazy-load", () => {
+  const error = vi.spyOn(console, "error").mockImplementation(() => {});
+  render(<TvImage src="/project.png" alt="Project" href="https://example.com" label="Project" channel={1}/>);
+  const img = screen.getByRole("img", { name: "Project" });
+  expect(img).toHaveAttribute("loading", "lazy");
+  expect(img).toHaveAttribute("decoding", "async");
+  expect(img).not.toHaveAttribute("fetchpriority");
+  expect(error).not.toHaveBeenCalled();
+});

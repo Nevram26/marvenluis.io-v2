@@ -3,12 +3,12 @@ import CodingActivity from "../components/profile/CodingActivity";
 import TvImage from "../components/profile/TvImage";
 import {about,links,profile,projects,work} from "../content/site";
 import ProfileCard from "../components/profile/ProfileCard";
-const images=["volt-guard.png","bi-lstm.png","cache-game.png","exit-interview.png","lexi-logic.png","stock-pilot.png","sea-water.png","amalzen-dx.png"];
+const images=["volt-guard.webp","bi-lstm.webp","cache-game.webp","exit-interview.webp","lexi-logic.webp","stock-pilot.webp","sea-water.webp","amalzen-dx.webp"];
 function Panel({id,title,children}){return <section className="space-panel" id={id}><h2>{title}</h2><div className="space-panel__body">{children}</div></section>}
 export default function Home(){return <div className="myspace-page"><SceneEffects/>
 <div className="profile-masthead"><span>marvenluis.io / profile</span><span>Quezon City, Philippines</span></div>
 <div className="space-columns"><aside className="space-sidebar">
-<section className="identity"><h1>Marven Luis</h1><p className="identity__quote">Full-stack developer, Quezon City</p><TvImage src="/images/formal-avatar.png" alt="Marven Luis, formal portrait" portrait/><p className="identity__status"><span aria-hidden="true">&#10022;</span> {profile.status}</p><a className="resume-button" href={links.resume} target="_blank" rel="noreferrer">Read my resume</a></section>
+<section className="identity"><h1>Marven Luis</h1><p className="identity__quote">Full-stack developer, Quezon City</p><TvImage src="/images/formal-avatar.webp" alt="Marven Luis, formal portrait" portrait/><p className="identity__status"><span aria-hidden="true">&#10022;</span> {profile.status}</p><a className="resume-button" href={links.resume} target="_blank" rel="noreferrer">Read my resume</a></section>
 <Panel title="Contacting Marven" id="profile-contact"><div className="contact-grid"><a href={links.email}>&#10022; Email me</a><a href={links.github}>&#10022; GitHub</a><a href={links.linkedin}>&#10022; LinkedIn</a></div></Panel>
 <Panel title="Marven's details" id="details"><ProfileCard/></Panel>
 <Panel title="Marven's interests" id="interests"><dl className="interest-table"><div><dt>General</dt><dd>I work out. Upper/lower split, four days a week.</dd></div><div><dt>Music</dt><dd>Emo, Post-Hardcore, Screamo, Metalcore, OPM, Rap, R&amp;B</dd></div>{profile.bands.length>0&&<div><dt>Now playing</dt><dd>{profile.bands.join(', ')}</dd></div>}<div><dt>Games</dt><dd>Monster Hunter, Warframe, Bloons, LoL, CS2 and AQW</dd></div><div><dt>Books</dt><dd>Reading</dd></div><div><dt>Travel</dt><dd>Travel</dd></div></dl></Panel>
