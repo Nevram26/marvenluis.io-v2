@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { links } from "../../content/site";
 
 const ENDPOINT = "https://github-contributions-api.jogruber.de/v4/Nevram26?y=last";
@@ -6,9 +6,11 @@ const ENDPOINT = "https://github-contributions-api.jogruber.de/v4/Nevram26?y=las
 export default function CodingActivity() {
   const [days, setDays] = useState(null);
   const [failed, setFailed] = useState(false);
+  const root = useRef(null);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(ENDPOINT, { signal: controller.signal })
+    let observer;
+    const load = () => fetch(ENDPOINT, { signal: controller.signal })
       .then(response => {
         if (!response.ok) throw new Error("GitHub activity unavailable");
         return response.json();
@@ -21,13 +23,22 @@ export default function CodingActivity() {
         setDays(data.contributions);
       })
       .catch(error => { if (error.name !== "AbortError") setFailed(true); });
-    return () => controller.abort();
+    if (typeof IntersectionObserver === "undefined") load();
+    else {
+      observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        load();
+      }, { rootMargin: "400px" });
+      observer.observe(root.current);
+    }
+    return () => { observer?.disconnect(); controller.abort(); };
   }, []);
 
   const count = days?.reduce((sum, day) => sum + day.count, 0) ?? 0;
   const offset = days ? new Date(`${days[0].date}T00:00:00Z`).getUTCDay() : 0;
   const columns = days ? Math.ceil((days.length + offset) / 7) : 53;
-  return <div className="coding-activity">
+  return <div className="coding-activity" ref={root}>
     {failed ? <p role="status">Couldn't load the contribution calendar. You can still see my activity on GitHub.</p> : !days ?
       <p role="status">Loading GitHub activity...</p> : <>
         <div className="coding-activity__summary"><strong>{count.toLocaleString()} contributions</strong><span>Past year on GitHub</span></div>
