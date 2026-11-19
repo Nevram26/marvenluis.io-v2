@@ -37,7 +37,7 @@ export const work = [
       "Built authentication, multi-school tenant isolation, real-time notifications, certificate issuance and file uploads across the React frontend and the NestJS API (70 merged PRs).",
       "Secured the API with global auth guards, tenant-scoped data access and strict JWT verification, with an HTTP regression test for each rejection case.",
       "Prevented conflicting updates when users act at the same time (invite redemption, certificate revocation, survey submission) with atomic SQL writes, and added a CI check that runs new migrations against existing data.",
-      "Coached OJT interns on coding standards and AI-assisted workflows and reviewed their PRs.",
+      "Reviewed pull requests for correctness, maintainability and potential data-loss regressions.",
     ],
     stack: ["TypeScript", "React", "NestJS", "Prisma", "PostgreSQL", "Supabase"],
   },
@@ -116,7 +116,7 @@ export const projects = [
 export const about = {
   paragraphs: [
     "I'm a full-stack developer with paid experience since November 2025 across an AI-native e-learning startup, a government-funded agtech platform and a university CMS. I graduated from Saint Louis University in Baguio in 2026 with a BS in Computer Science, a Dean's Lister for seven of eight semesters.",
-    "I build with Claude Code and Codex and coach interns on reviewing AI-written code, which mostly means catching the form update that would cascade-delete existing fields before it ships.",
+    "I focus on building reliable software, from secure authentication and clean data flows to reviewing changes and testing for regressions before release.",
     "Outside work: the gym, PC games, reading and travel.",
   ],
   skills: [
