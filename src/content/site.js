@@ -74,7 +74,7 @@ export const skills = [
   { group: "Backend and APIs", items: "Node.js, NestJS, Django, Wagtail CMS, FastAPI, REST APIs, Socket.IO" },
   { group: "Data", items: "PostgreSQL, Supabase, Prisma, Redis, MongoDB, SQL" },
   { group: "Testing and delivery", items: "Jest, Vitest, HTTP regression tests, GitHub Actions, Docker, AWS S3, Git" },
-  { group: "Machine learning", items: "Python, PyTorch (Bi-LSTM), ONNX Runtime Web, SHAP" },
+  { group: "Machine learning", items: "Python, PyTorch (Bi-LSTM), ONNX Runtime Web, occlusion-based feature attribution" },
   { group: "AI-assisted development", items: "Claude Code, Codex, agentic coding workflows" },
   { group: "Ways of working", items: "Code review, Agile/Scrum, Jira, Postman" },
 ];
