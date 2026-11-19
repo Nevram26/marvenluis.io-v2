@@ -81,13 +81,13 @@ export default function TvImage({ src, alt, href, label, channel = 0, portrait =
     onPointerLeave={() => setHovered(false)}
     onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}>
     <div className="tv-screen">
-      <img className={portrait ? "profile-art" : "tv-screen__image"} src={src} alt={alt}/>
+      <img className={portrait ? "profile-art" : "tv-screen__image"} src={src} alt={alt} decoding="async" fetchpriority={portrait ? "high" : undefined} loading={portrait ? undefined : "lazy"}/>
       <span ref={grain} className="tv-screen__static" aria-hidden="true"/>
       <span className="tv-screen__scanlines" aria-hidden="true"/>
       <span className="tv-screen__roll" aria-hidden="true"/>
       <span className="tv-screen__signal" aria-hidden="true"/>
     </div>
-    {portrait && <img className="tv-branches" src="/images/withered-frame.webp" alt="" aria-hidden="true"/>}
+    {portrait && <img className="tv-branches" src="/images/withered-frame.webp" alt="" aria-hidden="true" decoding="async"/>}
     {!portrait &&
       <div className="project-tv__panel" aria-hidden="true"><span className="project-tv__speaker"/><span className="project-tv__channel">CH {String(channel).padStart(2, "0")}</span><span className="project-tv__light"/><span className="project-tv__dial"/></div>}
   </Tag>;
